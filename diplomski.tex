@@ -1,0 +1,978 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,serbianc]{babel}
+\usepackage[default]{lato}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\usepackage{textcomp}
+\usepackage{xcolor,soulutf8}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes,patterns,arrows.meta}
+
+\tikzset{>={Latex[width=3mm,length=3mm]}} % bigger arrowheads
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\author{Ema Spasić}
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+
+
+\hypertarget{Увод}{
+\section{Увод}\label{Увод}}
+
+Тригонометрија је део математике и геометрије која се бави израчунавањем
+елемената троугла, проналажењем зависности у њиховим односима, као и
+успостављањем функција углова који их дефинишу.
+
+Првобитно је искључиво израчунавана вредност елемената троугла.
+
+Њен првобитни циљ је данас превазиђен и примена тригонометрије на основу
+израчунавања тригонометријских функција, ван сваког посматрања троугла,
+учинило је од тригонометрије значајну област математике и геометрије.
+Примењује се у различитим областима као што су инжењерство, архитектура,
+геодезија, навигација и астрономија.
+
+Особа одговорна за "модерну" тригонометрију био је ренесансни
+математичар из Немачке \hl{Јохан Милер фин Кенигсберг} - познатији као
+\hl{Регмомонтанус}. Био је први који је тригонометрију третирао као субјекат
+по себи. Даљи напредак тригонометрије направио је Никола Коперник.
+
+% ---------------------------------------------
+\newpage
+\section{Тригонометријска неједначина}
+
+То су неједначине код којих се непозната јавља као аргумент
+тригонометријске функције. Решити тригонометријске неједначине значи
+наћи све углове који је задовољавају.
+
+Приликом тражења решења ове неједначине можемо најпре решити
+одговарајућу једначину, а затим наћи интервале који се у неједначини
+траже.
+
+Свака тригонометријска неједначина после примене тригонометријских
+формула и трансформација своди се на основну тригонометријске
+неједначину.
+
+% ---------------------------------------------
+
+\subsection{Неједначина $\sin(x)>a,a\in\mathbb{R}$}
+
+\begin{enumerate}[label=\alph*)]
+\item $a<-1$, сваки број је решење тригонометријске неједначине, зато што је $-1\leq\sin(x)\leq1$
+\item $a>1$, неједначина нема решење
+\item $-1\leq a\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+Решавање:
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\clip
+  (-5.5,5.5) rectangle (5.5,-0.5);
+\draw[->]
+  (-5.5,0) -- (5,0) node[right] {$x$};
+\draw[->]
+  (0,-0.5) -- (0,5) node[above] {$y$};
+\coordinate (O) at (0,0);
+\coordinate (aux2) at (-4,{4*tan(40)});
+\coordinate (aux3) at (4,{4*tan(40)});
+\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
+\coordinate (right) at ({4*cos(40)},{4*sin(40)});
+\coordinate (leftUP) at (-{4*cos(40)},5);
+\coordinate (rightUP) at ({4*cos(40)},5);
+\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
+\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
+\draw[->]
+  (O) -- (aux3) node[above] {$\arcsin{a}$};
+\draw[->]
+  (O) -- (aux2);
+\draw
+  (left) -- (right);
+\draw[thick,red!70!black] 
+  (O) circle (4);
+\draw[red,<->] % arc
+	(O) ++ (leftArc) arc(140:40:4.5);
+\path[clip] (O) circle (4); % fill
+\fill[draw=black, thick, pattern=north west lines]
+	(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
+\end{tikzpicture}
+\caption{}
+\end{figure}
+
+Решење:
+
+\begin{equation}
+\begin{split}
+\arcsin(a+2k\pi)<x<\pi-\arcsin(a+2k\pi);k\in\mathbb{Z}\\
+x\in\bigcup\limits_{k\in\mathbb{Z}}\arcsin(a+2k\pi);\pi-\arcsin(a+2k\pi)	
+\end{split}
+\end{equation}
+
+% ---------------------------------------------
+
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\sin(x)>-3$
+\item $\sin(x)>3$
+\item $\sin(x)>\frac{1}{2}$
+\end{enumerate}
+
+Решење:
+
+\begin{enumerate}[label=\alph*)]
+\item $\sin(x)>-3$, с обзиром да је $-1\le\sin(x)\le1$ следи да је решење било који реалан број, односно  $x\in\mathbb{R}$
+\item $\sin(x)>3$, једначина нема решење због $-1\le\sin(x)\le1$
+\item $\sin(x)>\frac{1}{2}$
+\end{enumerate}
+
+
+\begin{figure}
+\centering
+	\begin{tikzpicture}
+	\clip
+	  (-5.5,5.5) rectangle (5.5,-0.5);
+	\draw[->]
+	  (-5.5,0) -- (5,0) node[right] {$x$};
+	\draw[->]
+	  (0,-0.5) -- (0,5) node[above] {$y$};
+	\coordinate (O) at (0,0);
+	\coordinate (aux2) at (-4,{4*tan(40)});
+	\coordinate (aux3) at (4,{4*tan(40)});
+	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
+	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
+	\coordinate (leftUP) at (-{4*cos(40)},5);
+	\coordinate (rightUP) at ({4*cos(40)},5);
+	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
+	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
+	\draw[->]
+	  (O) -- (aux3) node[above] {$\arcsin{\frac{1}{2}}=\frac{\pi}{2}$};
+	\draw[->]
+	  (O) -- (aux2);
+	\draw
+	  (left) -- (right);
+	\draw[thick,red!70!black] 
+	  (O) circle (4);
+	\draw[red,<->] % arc
+		(O) ++ (leftArc) arc(140:40:4.5);
+	\path[clip] (O) circle (4); % fill
+	\fill[draw=black, thick, pattern=north west lines]
+		(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
+	\end{tikzpicture}
+\caption{}
+\end{figure}
+
+Решење:
+
+\[\frac{\pi}{6}+2k\pi<x<\frac{5\pi}{6}+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{\pi}{6}+2k\pi,\frac{5\pi}{6}+2k\pi\]
+
+% ---------------------------------------------
+
+\subsubsection{Пример 2}
+
+Решити неједначину: $2\sin(2x-\frac{\pi}{3})=1$
+
+Решење:
+
+\[2\sin(2x-\frac{\pi}{3})=1\]
+
+ако решавамо по формули
+
+\[\arcsin\left(\frac{1}{2}+2k\pi\right)<2x-\frac{\pi}{3}<\pi-\arcsin\left(\frac{1}{2}+2k\pi\right)\]
+\[\frac{\pi}{6}+2k\pi<2x-\frac{\pi}{3}<\pi-\frac{\pi}{6}+2k\pi\]
+\[\frac{\pi}{6}+2k\pi<2x-\frac{\pi}{3}<\frac{5\pi}{6}+2k\pi\]
+\[\frac{\pi}{3}+\frac{\pi}{6}+2k\pi<2x<\frac{\pi}{3}+\frac{5\pi}{6}+2k\pi\]
+\[\frac{\pi}{2}+2k\pi<2x<\frac{7\pi}{6}+2k\pi\]
+\[\frac{\pi}{4}+k\pi<x<\frac{7\pi}{12}+k\pi,k\in\mathbb{R}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}(\frac{\pi}{4}+k\pi,\frac{7\pi}{12}+k\pi)\]
+
+% ---------------------------------------------
+
+\subsection{Неједначина $\sin(x)<a,a\in\mathbb{R}$}
+
+\begin{enumerate}[label=\alph*)]
+\item $a<-1$, с обзиром да је $-1\leq\sin(x)\leq1$ у овом случају немамо решење, односно: $x=\O$
+\item $a>1$, сваки реалан број је решење, односно $x\in\mathbb{R}$
+\item $-1\leq a\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+Решавање:
+
+\begin{figure}
+\centering
+	\begin{tikzpicture}
+	\clip
+	  (-5.5,5.5) rectangle (5.5,-5.5);
+	\draw[->]
+	  (-5.5,0) -- (5,0) node[right] {$x$};
+	\draw[->]
+	  (0,-0.5) -- (0,5) node[above] {$y$};
+	\coordinate (O) at (0,0);
+	\coordinate (aux2) at (-4,{4*tan(40)});
+	\coordinate (aux3) at (4,{4*tan(40)});
+	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
+	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
+	\coordinate (leftDOWN) at (-5,-5);
+	\coordinate (rightDOWN) at (5,-5);
+	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
+	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
+	\draw[->]
+	  (O) -- (aux3) node[above] {$2\pi+arcsin{a}$};
+	\draw[->]
+	  (O) -- (aux2) node[above] {$\pi-arcsin{a}$};
+	\draw
+	  (left) -- (right);
+	\draw[thick,red!70!black] 
+	  (O) circle (4);
+	\draw[red,<->] % arc
+		(O) ++ (leftArc) arc(-220:40:4.5);
+	\path[clip] (O) circle (4); % fill
+	\fill[draw=black, thick, pattern=north west lines]
+		(-5,{4*sin(40)}) -- (leftDOWN) -- (rightDOWN) -- (5,{4*sin(40)}) -- cycle;
+	\end{tikzpicture}
+\caption{}
+\end{figure}
+
+\begin{equation}
+\begin{split}
+\pi-\arcsin(a+2k\pi)<x<2\pi+\arcsin(a+2k\pi);k\in\mathbb{Z}\\
+x\in\bigcup\limits_{k\in\mathbb{Z}}(\pi-\arcsin(a+2k\pi);2\pi+\arcsin(a+2k\pi))
+\end{split}
+\end{equation}
+
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\sin(x)<-2$ , једначина нема решење
+\item $\sin(x)<2$, решење: $x\in\mathbb{R}$
+\item $\sin(x)<-\frac{\sqrt3}{2}$
+\end{enumerate}
+
+
+\[\frac{4\pi}{3}+2x\pi<x<\frac{5\pi}{3}+2k\pi,x\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}(\frac{4\pi}{3}+2k\pi,\frac{5\pi}{3}+2k\pi)\]
+
+ако решавамо по формули
+
+\[\pi-\arcsin\left(-\frac{\sqrt{3}}{2}\right)+2k\pi<x<2\pi+\arcsin\left(-\frac{\sqrt{3}}{2}\right)+2k\pi\]
+\[\pi+\frac{\pi}{3}+2k\pi<x<2\pi-\frac{\pi}{3}+2k\pi\]
+\[\frac{4\pi}{3}+2k\pi<x<\frac{5\pi}{3}+2k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{4\pi}{3}+2k\pi,\frac{5\pi}{3}+2k\pi\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину:
+
+\[\sin(x)\cos\left(\frac{\pi}{6}\right)+\cos(x)\sin\left(\frac{\pi}{6}\right)<\frac{1}{2}\]
+
+Решење:
+
+\[\sin(x)\cos\left(\frac{\pi}{6}\right)+\cos(x)\sin\left(\frac{\pi}{6}\right)<\frac{1}{2}\]
+\[\sin\left(x+\frac{\pi}{6}\right)<\frac{1}{2}\]
+\[\frac{5\pi}{6}+2k\pi<x+\frac{\pi}{6}<\frac{13\pi}{6}+2k\pi\]
+\[\frac{5\pi}{6}-\frac{\pi}{6}+2k\pi<x<\frac{13\pi}{6}-\frac{\pi}{6}+2k\pi\]
+\[\frac{4\pi}{6}+2k\pi<x<\frac{12\pi}{6}+2k\pi\]
+\[\frac{2\pi}{3}+2k\pi<x<2\pi+2k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{2\pi}{3}+2k\pi,2\pi+2k\pi\]
+
+Могли смо да решимо користећи формулу XX
+
+
+% ---------------------------------------------
+\subsubsection{Пример 3}
+
+Решити неједначину: $\sin(x)+\cos(x)<\sqrt{2}$
+
+Решење:
+
+\[\sin(x)+\cos(x)<\sqrt{2}\qquad/:\sqrt{2}\]
+\[\frac{1}{\sqrt{2}}\sin(x)+\frac{1}{\sqrt{2}}\cos(x)<\frac{\sqrt{2}}{\sqrt{2}}\]
+\[\frac{\sqrt{2}}{2}\sin(x)+\frac{\sqrt{2}}{2}\cos(x)<1\]
+\[(\frac{\sqrt{2}}{2}=\cos(\frac{\pi}{4});\frac{\sqrt{2}}{2}=\sin(\frac{\pi}{4}))\]
+\[\cos(\frac{\pi}{4})\sin(x)+\sin(\frac{\pi}{4})\cos(x)<1\]
+\[\sin(x+\frac{\pi}{4})<1\qquad\text{(на основу адиционе теореме)}\]
+\[\text{Пошто је} -1\leqslant\sin(x)\leqslant1\Rightarrow \text{решење је} \forall x\in\mathbb{R}\]
+\[\text{сем } \sin\left(x+\frac{\pi}{4}\right)=1\text{ односно }x+\frac{\pi}{4}=\frac{\pi}{2}+2k\pi,k\in\mathbb{Z}\]
+\centerline{даје решење}
+\[\forall x,x\neq\frac{\pi}{4}+2x\pi,k\in\mathbb{Z}\]
+
+
+
+% ---------------------------------------------
+\subsection{Неједначина $\cos(x)<b,b\in\mathbb{R}$}
+
+\begin{enumerate}[label=\alph*)]
+\item $b<-1$, с обзиром да је $-1\leq\cos(x)\leq1$ сваки реалан број је решење ове неједначине
+\item $b>1$, неједначина нема решења, зато што је $-1\leq\cos(x)\leq1$
+\item $-1\leq b\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+\[\arccos(b)+2k\pi<x<2\pi-\arccos(b)+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\arccos(b)+2k\pi,2\pi-\arccos(b)+2k\pi\right)\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\cos(x)<4$
+\item $\cos(x)<-\frac{5}{2}$
+\item $\cos(x)<-\frac{\sqrt(3)}{2}$
+\end{enumerate}
+
+Решење:
+
+\begin{enumerate}[label=\alph*)]
+\item $\cos(x)<4$, пошто је $-1\leqslant\cos(x)\leqslant1$ решење је $\forall x,x\in\mathbb{R}$
+\item $\cos(x)<-\frac{5}{2}$, неједначина нема решење
+\item $\cos(x)<-\frac{\sqrt(3)}{2}$
+\end{enumerate}
+
+\[\frac{2\pi}{3}+2k\pi<x<\frac{4\pi}{3}+2k\pi,k\in\mathbb{R}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{2\pi}{3}+2k\pi,\frac{4\pi}{3}+2k\pi\]
+
+
+% ---------------------------------------------
+\subsection{Неједначина $\cos(x)>b,b\in\mathbb{R}$}
+
+
+\begin{enumerate}[label=\alph*)]
+\item $b<-1$, неједначина нема решења, зато што је $-1\leq\cos(x)\leq1$
+\item $b>1$, с обзиром да је $-1\leq\cos(x)\leq1$ сваки реалан број је решење ове неједначине
+\item $-1\leq b\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+\[\arccos(b)+2k\pi<x<2\pi-\arccos(b)+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\arccos(b)+2k\pi,2\pi-\arccos(b)+2k\pi\]
+
+
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\cos(x)>3$
+\item $\cos(x)>-3$
+\item $\cos(x)>\frac{1}{2}$
+\end{enumerate}
+
+Решење:
+
+\begin{enumerate}[label=\alph*)]
+\item $\cos(x)>3$ , пошто је $-1\leqslant\cos(x)\leqslant1$ неједначина нема решење
+\item $\cos(x)>-3$, пошто је $-1\leqslant\cos(x)\leqslant1$ решење је $\forall x,x\in\mathbb{R}$
+\item $\cos(x)>\frac{1}{2}$
+\end{enumerate}
+
+\[-\frac{\pi}{2}+2k\pi<x<\frac{\pi}{3}+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}-\frac{\pi}{3}+2k\pi,\frac{\pi}{3}+2k\pi.\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину: $2\cos(3x-\frac{\pi}{3})\ge\sqrt{2}$
+
+Решење:
+
+\[2\cos\left(3x-\frac{\pi}{3}\right)\geq\sqrt{2}\qquad/:2\]
+\[\cos\left(3x-\frac{\pi}{3}\right)\geqslant\frac{\sqrt{2}}{2}\]
+\[-\frac{\pi}{4}+2k\pi\leq3x-\frac{\pi}{3}\leq\frac{\pi}{4}+2k\pi\]
+\[-\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\leq3x\leq\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\]
+\[\frac{-3\pi+4\pi}{12}+2k\pi\leq3x\leq\frac{3\pi+4\pi}{12}+2k\pi\]
+\[\frac{\pi}{12}+2k\pi\leq3x\leq\frac{7\pi}{12}+2k\pi\qquad/:3\]
+\[\frac{\pi}{36}+\frac{2k\pi}{3}\leqslant\frac{7\pi}{36}+\frac{2k\pi}{3},k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{x\in\mathbb{Z}}\left[\frac{\pi}{36}+\frac{2k\pi}{3},\frac{7\pi}{36}+\frac{2k\pi}{3}\right]\]
+
+% ---------------------------------------------
+\subsubsection{Пример 3}
+
+Решити неједначину: $\sin(x)-\cos(x)\ge1$
+
+Решење:
+
+\[\sin(x)-\cos(x)\geqslant1\qquad/:\sqrt{2}\]
+\[\frac{1}{\sqrt{2}}\sin(x)-\frac{1}{\sqrt{2}}\cos(x)\geqslant\frac{1}{\sqrt{2}}\qquad/(-1)\]
+\[\frac{\sqrt{2}}{2}\cos(x)-\frac{\sqrt{2}}{2}\sin(x)\leq-\frac{\sqrt{2}}{2}\]
+\[\cos\left(\frac{\pi}{4}\right)\cos(x)-\sin\left(\frac{\pi}{4}\right)\sin(x)\leqslant-\frac{\sqrt{2}}{2}\]
+\[\cos\left(x+\frac{\pi}{4}\right)\leq\frac{-\sqrt{2}}{2}\]
+\[\frac{3\pi}{4}+2k\pi\leqslant x+\frac{\pi}{4}\leqslant\frac{5\pi}{4}+2k\pi\]
+\[\frac{3\pi}{4}-\frac{\pi}{4}+2k\pi\leqslant x\leqslant\frac{5\pi}{4}-\frac{\pi}{4}+2k\pi\]
+\[\frac{2\pi}{4}+2k\pi\leqslant x\leqslant\frac{4\pi}{4}+2k\pi\]
+\[\frac{\pi}{2}+2k\pi\leqslant x\leqslant\pi+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left[\frac{\pi}{2}+2k\pi,\pi+2k\pi\right]\]
+
+% ---------------------------------------------
+\newpage
+\section{Неједначине са $\tg(x)$ i $\ctg(x)$}
+
+Ове неједначине за разлику од оних са $\sin(x)$ и $\cos(x)$ увек имају решења с обзиром да $\tg(x)$ и $\ctg(x)$ узимају вредности из целог скупа $\mathbb{R}$.
+
+% ---------------------------------------------
+\subsection{Неједначина $\tg(x)>a,a\in\mathbb{R}$}
+
+Решење:
+
+\[\arctan(a)+k\pi<x<\frac{\pi}{2}+k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\arctg(a)+k\pi,\frac{\pi}{2}+k\pi\right)\]
+
+% ---------------------------------------------
+\subsubsection{Primer 1}
+
+Решити неједначину: $3\tg(x)\ge\sqrt3$
+
+Решење:
+
+\[3\tg(x)\geqslant\sqrt{3}\]
+\[\tg(x)\geqslant\frac{\sqrt{3}}{3}\]
+\[\frac{\pi}{6}+2k\pi\leqslant x\leqslant\frac{\pi}{2}+k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left[\frac{\pi}{6}+k\pi,\frac{\pi}{2}+k\pi\right]\]
+
+% ---------------------------------------------
+\subsubsection{Primer 2}
+
+Решити неједначину: $\tg(3x-\frac{\pi}{4})\ge\sqrt3$
+
+Решење:
+
+\[\frac{\pi}{3}+k\pi<3x-\frac{\pi}{4}<\frac{\pi}{2}+k\pi\]
+\[\frac{\pi}{3}+\frac{\pi}{4}+k\pi<3\times<\frac{\pi}{2}+\frac{\pi}{4}+k\pi\]
+\[\frac{7\pi}{12}+k\pi<3x<\frac{3\pi}{4}+k\pi\qquad/:3\]
+\[\frac{7\pi}{36}+\frac{k\pi}{3}<x<\frac{\pi}{4}+\frac{k\pi}{3}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\frac{7\pi}{36}+\frac{k\pi}{3},\frac{\pi}{4}+\frac{k\pi}{3}\right)\]
+
+% ---------------------------------------------
+\subsection{Неједначина $\tg(x)<a,a\in\mathbb{R}$}
+
+Решење:
+
+\[-\frac{\pi}{2}+k\pi<x<\arctg(a)+k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{2}+k\pi,\arctan(a)+k\pi\right)\]
+
+% ---------------------------------------------
+\subsubsection{Primer 1}
+
+Решити неједначину: $\tg(2x+\frac{\pi}{3})\le1$
+
+Решење:
+
+\[-\frac{\pi}{2}+k\pi<2x+\frac{\pi}{3}<\frac{\pi}{4}+k\pi\]
+\[-\frac{\pi}{2}-\frac{\pi}{3}+k\pi<2x<\frac{\pi}{4}-\frac{\pi}{3}+k\pi\]
+\[-\frac{5\pi}{6}+k\pi<2x<-\frac{\pi}{12}+k\pi\qquad/:2\]
+\[-\frac{5\pi}{12}+\frac{k\pi}{2}<x<-\frac{\pi}{24}+\frac{k\pi}{2},k\in\mathbb{Z}\]
+или
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{5\pi}{12}+\frac{k\pi}{2},-\frac{\pi}{24}+\frac{k\pi}{2}\right)\]
+
+
+% ---------------------------------------------
+\subsection{Неједначина $\ctg(x)>a,a\in\mathbb{R}$}
+
+Решење:
+
+\[k\pi<x<\arctg(a)+k\pi,k\in\mathbb{R}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(k\pi,\arctg(a)+k\pi\right)\]
+
+
+% ---------------------------------------------
+\subsubsection{Primer 1}
+
+Решити неједначину:
+
+\[\ctg(2x+\frac{\pi}{4})>\frac{\sqrt{3}}{3}\]
+
+Решење:
+
+\[k\pi<2x+\frac{\pi}{4}<\frac{\pi}{3}+k\pi\]
+\[-\frac{\pi}{4}+k\pi<2x<\frac{\pi}{3}-\frac{\pi}{4}+k\pi\]
+\[-\frac{\pi}{4}+k\pi<2x<\frac{\pi}{12}+k\pi,k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{4}+k\pi,\frac{\pi}{12}+k\pi\right)\]
+
+% ---------------------------------------------
+\subsection{Неједначина $\ctg(x)<a,a\in\mathbb{R}$}
+
+Решење:
+
+\[\arctg(a)+k\pi<x<\pi+k\pi\]
+\[x\in\bigcup_{k\in\mathbb{Z}}(\arctg(a)+k\pi,\pi+k\pi)\]
+
+% ---------------------------------------------
+\subsubsection{Primer 1}
+
+Решити неједначину:
+
+\[\ctg\left(3x+\frac{\pi}{6}\right)<-\sqrt{3}\]
+
+Решење:
+
+\[\frac{5\pi}{6}+\pi\pi<3x+\frac{\pi}{6}<\pi+k\pi\]
+\[\frac{5\pi}{6}-\frac{\pi}{6}+k\pi<3x<\pi-\frac{\pi}{6}+k\pi\]
+\[\frac{4\pi}{6}+k\pi<3x<\frac{5\pi}{6}+k\pi\]
+\[\frac{2\pi}{3}+k\pi<3x<\frac{5\pi}{6}+k\pi\qquad/:3\]
+\[\frac{2\pi}{9}+\frac{k\pi}{3}<x<\frac{5\pi}{18}+\frac{k\pi}{3}\]
+
+
+% ---------------------------------------------
+\newpage
+\section{Различити типови тригонометријских неједначина}
+
+% ---------------------------------------------
+\subsection{Неједначине које се тригономтријским трансформацијама своде на основне}
+
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[\cos^{2}(x)+2\sin(x)>1\]
+
+Решење:
+
+\[1-\sin^{2}(x)+2\sin(x)>1\]
+\[\sin(x)(2-\sin(x))>0\]
+\centerline{због $-1\le\sin(x)\le1$}
+\[2-\sin(x)>0\]
+\[\sin(x)>0\]
+\centerline{даје}
+\[0+2k\pi<x<k\pi+2k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}(2k\pi,\pi+2k\pi)\]
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину:
+
+\[1+\cos(x)\cos(3x)>\sin^{2}(x)\]
+
+Решење:
+
+\[1+\cos(x)\cos(3x)>\sin^{2}(x)\]
+\[\cos^{2}(x)+\cos(x)\cos(3x)>0\]
+\[\cos(x)(\cos(x)+\cos(3x))>0\]
+\[\cos(x)\cdot2\cos\left(\frac{x+3x}{2}\right)\cdot\cos\left(\frac{x-3x}{2}\right)>0\]
+\[2\cos(x)\cdot\cos(2x)\cdot\cos(x)>0\]
+\[2\cos^{2}(x)\cdot\cos(2x)>0\]
+\[\cos(2x)>0\]
+\centerline{даје}
+\[-\frac{\pi}{2}+2k\pi<2x<\frac{\pi}{2}+2k\pi\qquad/:2\]
+\[-\frac{\pi}{4}+k\pi<x<\frac{\pi}{4}+k\pi,k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{4}+k\pi,\frac{\pi}{4}+k\pi\right)\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 3}
+
+Решити неједначину:
+
+\[\frac{\sin(2x)-\cos(2x)+1}{\sin(2x)+\cos(2x)-1}>0\]
+
+Решење:
+
+\[\frac{\sin(2x)+(1-\cos(2x))}{\sin(2x)-(1-\cos(2x))}>0\]
+\[\frac{2\sin(x)\cos(x)+2\sin^{2}(x)}{2\sin(x)\cos(x)-2\sin^{2}(x)}>0\]
+\[\frac{2\sin(x)(\cos(x)+\sin(x))}{2\sin(x)(\cos(x)-\sin(x))}>0\]
+\[\frac{\cos(x)+\sin(x)}{\cos(x)-\sin(x)}>0\]
+\[\frac{\sin\left(\frac{\pi}{2}-x\right)+\sin(x)}{\sin\left(\frac{\pi}{2}-x\right)-\sin(x)}>0\]
+\[\frac{2\sin\left(\frac{\frac{\pi}{2}-x+x}{2}\right)\cdot\cos\left(\frac{\frac{\pi}{2}-x-x}{2}\right)}{2\cos\left(\frac{\frac{\pi}{2}-x+x}{2}\right)\cdot\sin\left(\frac{\frac{\pi}{2}-x-x}{2}\right)}>0\]
+\[\frac{\sin\left(\frac{\pi}{4}\right)\cdot\cos\left(\frac{\pi}{4}-x\right)}{\cos\left(\frac{\pi}{4}\right)\cdot\sin\left(\frac{\pi}{4}-x\right)}>0\]
+\[\ctg\left(\frac{\pi}{4}-x\right)>0\]
+\[\tg\left(\frac{\pi}{2}-\left(\frac{\pi}{4}-x\right)\right)>0\]
+\[\tg\left(\frac{\pi}{4}+x\right)>0\]
+\centerline{даје}
+\[0+K\pi<\frac{\pi}{4}+x<\frac{\pi}{2}+K\pi\]
+\[-\frac{\pi}{4}+k\pi<x<\frac{\pi}{2}-\frac{\pi}{4}+4\pi\]
+\[-\frac{\pi}{4}+k\pi<x<\frac{\pi}{4}+k\pi,k\in\mathbb{R}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{4}+k\pi,\frac{\pi}{4}+k\pi\right)\]
+
+
+% ---------------------------------------------
+\subsection{Неједначине које се сменом своде на основне}
+
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[2\cos^{2}(x)-3\cos(x)+1>0\]
+
+
+Решење:
+
+\[\text{смена:}\cos(x)=t,-1\leqslant t\leqslant1\]
+\[2t^{2}-3t+1>0\]
+\[t_{1/2}=\frac{3\pm\sqrt{9-8}}{4}\]
+\[t_{1/2}=\frac{3\pm1}{4}\Rightarrow t_{1}=1,t_{2}=\frac{1}{2}
+\]
+\[t<\frac{1}{2}Vt>1\]
+
+\begin{enumerate}[label=\alph*)]
+\item $t>1\Rightarrow\cos(x)>1$ , нема решења пошто је $-1\leqslant\cos(x)\leqslant1$
+\item $t<\frac{1}{2}=>\cos(x)<\frac{1}{2}$
+\end{enumerate}
+
+\[\frac{\pi}{3}+2k\pi<x<\frac{5\pi}{3}+2k\pi,\qquad k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\frac{\pi}{3}+2k^{\pi},\frac{5\pi}{3}+2k^{\pi}\right)\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину:
+
+\[\sin(x)-3\cos(x)<1\]
+
+Решење:
+
+\[\text{смена:}\tg\left(\frac{x}{2}\right)=t\]
+\[\sin(x)=\frac{2\tg\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}\Rightarrow\sin(x)=\frac{2t}{1+t^{2}}\]
+\[\cos(x)=\frac{1-\tg^{2}\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}\Rightarrow\cos(x)=\frac{1-t^{2}}{1+t^{2}}\]
+
+Решавање:
+
+\[\sin(x)-3\cos(x)<1\]
+\[\frac{2t}{1+t^{2}}-\frac{3\left(1-t^{2}\right)}{1+t^{e}}<1\qquad/1+t^{2}>0\]
+\[2t-3+3t^{2}<1+t^{2}\]
+\[2t^{2}+2t-4<0\qquad/:2\]
+\[t^{2}+t-2<0\]
+\[t_{1/2}=\frac{-1\pm\sqrt{1+8}}{2}\]
+\[t_{1/2}=\frac{-1\pm3}{2};t_{1}=1,t_{2}=-2\]
+\[-2<t<1\]
+\[-2<\tg(\frac{x}{2})<1\]
+\[\arctg(-2)+k\pi<\frac{x}{2}<\arctg(1)+k\pi\]
+\[-\arctg(2)+k\pi<\frac{x}{2}<\frac{\pi}{4}+k\pi\qquad/\cdot2\]
+\[-2\arctg(2)+2k\pi<x<\frac{\pi}{2}+2k\pi,k\in\mathbb{Z}\]
+
+% ---------------------------------------------
+\subsection{Хомогене неједначине}
+
+Неједначина облика $a\sin^{2}(x)+b\sin(x)\cos(x)+c\cos^{2}(x)\geqslant0$ зовемо хомогеном.
+
+Решавање:
+
+\[a\sin^{2}(x)+b\sin(x)\cos(x)+c\cos^{2}(x)>0\qquad/:\cos^{2}(x)\neq0, x\neq\frac{\pi}{2}+k\pi,k\in\mathbb{Z}\]
+\[a\frac{\sin^{2}(x)}{\cos^{2}(x)}+b\frac{\sin(x)\cos(x)}{\cos^{2}(x)}+c\frac{\cos^{2}(x)}{\cos^{2}(x)}>0\]
+\[a\tg^{2}(x)+b\tg(x)+c>0\]
+\[\text{сменом} \tg(x)=t\]
+\[\text{сводимо на квадратну једначину}\]
+\[at^{2}+bt+c>0\]
+
+Решавањем ове неједначине и враћањем у смену долазимо до основне неједначине.
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[2\sin^{2}(x)-5\sin(x)\cos(x)+2\cos^{2}(x)<0\]
+
+Решење:
+
+\[2\sin^{2}(x)-5\sin(x)\cos(x)+2\cos^{2}(x)<0\qquad/:\cos^{2}(x)\]
+\[2\frac{\sin^{2}(x)}{\cos^{2}(x)}-\frac{5\sin(x)\cos(x)}{\cos^{2}(x)}+\frac{2\cos^{2}(x)}{\cos^{2}(x)}<0\]
+\[2\tg^{2}(x)-5\tg(x)+2<0\]
+\[\text{сменом }\tg(x)=t\]
+\[2t^{2}-5t+2<0\]
+\[t_{1/2}=\frac{5\pm\sqrt{25-16}}{4}\]
+\[t_{1/2}=\frac{5\pm3}{4}\]
+\[t_{1}=2,t_{2}=\frac{1}{2}\]
+\[\frac{1}{2}<t<2\]
+\[\frac{1}{2}<\tg(x)<2\]
+\[\arctg\left(\frac{1}{2}+k\pi\right)<x<\arctg(2+k\pi),k\in\mathbb{Z}\]
+
+% ---------------------------------------------
+\subsection{Линеарна тригонометријска неједначина}
+
+Општи облик: $a\sin(x)+b\cos(x)\gtrless c$
+
+Можемо ову неједначину решавати на два начина.
+
+Први начин: уводимо смену да је
+
+\[\tg\left(\frac{x}{2}\right)=t\]
+\[\Rightarrow\sin(x)=\frac{2+\tg\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}=\frac{2t}{1+t^{2}}\]
+\[\cos(x)=\frac{1-\tg^{2}\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}=\frac{1-t^{2}}{1+t^{2}}\]
+
+Решен пример 2. у одељку: Неједначине које се сменом своде на основне.
+
+Други начин:
+
+\[a\sin(x)+6\cos(x)>c\qquad/:\sqrt{a^{2}+b^{2}}\]
+\[\Rightarrow\frac{a}{\sqrt{a^{2}+b^{2}}}\sin(x)+\frac{b}{\sqrt{a^{2}+b^{2}}}\cos(x)>\frac{c}{\sqrt{a^{2}+b^{2}}}\]
+
+С обзиром да је $\left(\frac{a}{\sqrt{a^{2}+b^{2}}}\right)^{2}+\left(\frac{b}{\sqrt{a^{2}+b^{2}}}\right)^{2}=1$
+следи да постоји угао $\varphi$ тако да је
+
+\[\cos(\varphi)=\frac{a}{\sqrt{a^{2}+b^{2}}},\sin(\varphi)=\frac{6}{\sqrt{a^{2}+b^{2}}}\]
+
+или обрнуто враћањем у неједначину
+
+\[\cos(\varphi)\sin(x)+\sin(\varphi)\cos(x)>\frac{c}{\sqrt{a^{2}+b^{2}}}\]
+\[\sin(x+\varphi)>\frac{c}{\sqrt{a^{2}+b^{2}}}\]
+
+што се решава као основна.
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[\sin(x)+\sqrt{3}\cos(x)<-\sqrt{2}\]
+
+Решавање:
+
+\[\sin(x)+\sqrt{3}\cos(x)<-\sqrt{2}\qquad/:\sqrt{1+\sqrt{3}^{2}}=2\]
+\[\frac{1}{2}\sin(x)+\frac{\sqrt{3}}{2}\cos(x)<-\frac{\sqrt{2}}{2}\]
+\[\cos\left(\frac{\pi}{3}\right)=\frac{1}{2}\quad\text{и}\quad\sin\left(\frac{\pi}{3}\right)=\frac{\sqrt{3}}{2}\]
+\[\Rightarrow\cos\left(\frac{\pi}{3}\right)\sin(x)+\sin\left(\frac{\pi}{3}\right)\cos(x)<-\frac{\sqrt{2}}{2}\]
+\[\sin\left(x+\frac{\pi}{3}\right)<-\frac{\sqrt{2}}{2}\]
+
+(могли смо да користимо адициону теорему за косинус)
+
+Решење:
+
+\[\frac{5\pi}{4}+2k\pi<x<\frac{7\pi}{4}+2k\pi,\qquad k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\frac{5\pi}{4}+2k\pi,\frac{7\pi}{4}+2k\pi\right)\]
+
+
+% ---------------------------------------------
+\section{Разни задаци из неједначина}
+
+\subsection{Задатак 1}
+
+Решити неједначину:
+
+\[\frac{1}{\cos^{2}(x)}-1\geqslant\frac{|\tg(x)-\sqrt{3}|+\sqrt{3}}{\ctg(x)}\]
+
+Решавање:
+
+Zadatak je definisan ako je $\cos(x)\neq0$ и $\ctg(x)\neq0$ $\Rightarrow x\neq\frac{\pi}{2}+k\pi$
+
+\[\frac{1-\cos^{2}(x)}{\cos^{2}(x)}\geqslant\frac{|\tg(x)-\sqrt{3}|+\sqrt{3}}{\ctg(x)}\]
+\[\frac{\sin^{2}(x)}{\cos^{2}(x)}\geqslant(|\tg(x)-\sqrt{3}|+\sqrt{3})\cdot\frac{1}{\ctg(x)}\]
+\[\tg^{2}(x)\geq(|\tg(x)-\sqrt{3}|+\sqrt{3})\cdot\tg(x)\]
+\[\tg(x)[\tg(x)-(|\tg(x)-\sqrt{3}|+\sqrt{3})]\geqslant0\]
+
+Разликујемо два случаја.
+
+Случај 1: za $\tg(x)>\sqrt{3}$
+
+\[\tg(x)[\tg(x)-(\tg(x)-\sqrt{3}+\sqrt{3})]\geqslant0\]
+\[\tg(x)\cdot[\tg(x)-\tg(x)]\geqslant0\]
+\[\tg(x)\cdot0\geqslant0\]
+\[\Rightarrow x\in\mathbb{R}\text{и}x\neq\frac{\pi}{2}+k\pi\]
+
+Решење:
+
+\[\frac{\pi}{3}+k\pi\leqslant x\leqslant\frac{\pi}{2}+k\pi\]
+\[R_{1}: x\in\left[\frac{\pi}{3}+k\pi,\frac{\pi}{2}+k\pi\right],k\in\mathbb{Z}\]
+
+Случај 2: za $\tg(x)<\sqrt{3}$
+
+\[\tg^{2}(x)-(-\tg(x)+\sqrt{3}+\sqrt{3})-\tg(x)\geqslant0\]
+\[\tg(x)[\tg(x)+\tg(x)-2\sqrt{3}]\geqslant0\]
+\[2\tg(x)[\tg(x)-\sqrt{3}]\geqslant0\]
+\[\text{пошто је }\tg(x)-\sqrt{3}<0\]
+\[2\tg(x)<0\]
+\[\tg(x)<0\]
+
+Решење:
+
+\[R_{2}: x=\left(\frac{\pi}{2}+k\pi,\pi+k\pi\right),k\in\mathbb{Z}\]
+
+
+Решење задатка:
+
+\[R=R_{1}\cup R_{2}\]
+\[x\in\left[\frac{\pi}{3}+k\pi,\frac{\pi}{2}+k\pi\right)\cup\left(\frac{\pi}{2}+k\pi,\pi+k\pi\right),k\in\mathbb{Z}\]
+
+% ---------------------------------------------
+\subsection{Задатак 2}
+
+Решити неједначину:
+
+\[\arcsin\left(x^{2}-2x-2\right)>\frac{\pi}{4}\]
+
+Решавање:
+
+Дефинисаност једначине:
+
+\[1\leqslant x^{2}-2x-2\leqslant1\]
+
+Случај 1:
+
+\[x^{2}-2x-2\geq-1\]
+\[x^{2}-2x-1\geqslant0\]
+\[x_{1/2}=\frac{2\pm\sqrt{4+4}}{2}\]
+\[x_{1/2}=\frac{2\pm2\sqrt{2}}{2}\]
+\[x_{1/2}=1\pm\sqrt{2}\]
+
+Случај 2:
+
+\[x^{2}-2x-2\leq1\]
+\[x^{2}-2x-3\leqslant0\]
+\[x_{1/2}=\frac{2\pm\sqrt{4+12}}{2}\]
+\[x_{1/2}=\frac{2\pm4}{2}\]
+\[x_{n}=3,x_{2}=-1\]
+
+Дефинисаност неједначине:
+
+\[x\in[-1,1-\sqrt{2}]\cup[1+\sqrt{2},3]\]
+
+Примена:
+
+\[\arcsin\left(x^{2}-2x-2\right)>\frac{\pi}{4}\]
+\[x^{2}-2x-2>\sin\left(\frac{\pi}{4}\right)\]
+\[x^{2}-2x-2>\frac{\sqrt{2}}{2}\qquad/\cdot2\]
+\[2x^{2}-4x-4>\sqrt{2}\]
+\[2x^{2}-4x-4-\sqrt{2}>0\]
+\[x_{1/2}=\frac{4\pm\sqrt{16-8(-4-\sqrt{2})}}{4}\]
+\[x_{1/2}=\frac{4\pm\sqrt{16+32+8\sqrt{2}}}{4}\]
+\[x_{1/2}=\frac{4\pm\sqrt{48+\frac{16\sqrt{2}}{2}}}{4}\]
+\[x_{12}=\frac{4\pm4\sqrt{3+\frac{\sqrt{2}}{2}}}{4}\]
+\[x_{1+2}=1\pm\sqrt{3+\frac{\sqrt{2}}{2}}\]
+\[R:x\in\left[-1,1-\sqrt{3+\frac{\sqrt{2}}{2}}\right)\cup\left(1+\sqrt{3+\frac{\sqrt{2}}{2}},3\right)\]
+
+% ---------------------------------------------
+\subsection{Задатак 3}
+
+Решити неједначину:
+
+\[\frac{1}{\tg(x)-1}\leqslant\frac{1}{\tg(x)}\]
+
+Решавање:
+
+Егзистенција задатка:
+
+\[\tg(x)\neq1\text{ и }\tg(x)\neq0\]
+\[x\neq\frac{\pi}{4}+k\pi\text{ и }x\neq k\pi\]
+
+\[\frac{1}{\tg(x)-1}-\frac{1}{\tg(x)}\leqslant0\]
+\[\frac{1}{\tg(x)-1}-\frac{1}{\tg(x)}\leqslant0\]
+\[\frac{1}{\tg(x)(\tg(x)-1)}\leqslant0\]
+\[\tg(x)(\tg(x)-1)<0\]
+\[[\tg(x)>0\quad\wedge\quad\tg(x)-1<0]\vee[\tg(x)<0\wedge\tg(x)-1>0]\]
+\[\tg(x)>0\wedge\tg(x)<1\]
+\[0<\tg(x)<1\]
+\[x\in\left(k\pi,\frac{\pi}{4}+k\pi\right),k\in\mathbb{Z}\]
+
+% ---------------------------------------------
+\newpage
+
+\section{Тригонометријски круг}
+    \hspace*{-2em}\begin{tikzpicture}[scale=5,cap=round,>=latex]
+        % draw the coordinates
+        \draw[->] (-1.5cm,0cm) -- (1.5cm,0cm) node[right,fill=white] {$x$};
+        \draw[->] (0cm,-1.5cm) -- (0cm,1.5cm) node[above,fill=white] {$y$};
+
+        % draw the unit circle
+        \draw[thick] (0cm,0cm) circle(1cm);
+
+        \foreach \x in {0,30,...,360} {
+                % lines from center to point
+                \draw[gray] (0cm,0cm) -- (\x:1cm);
+                % dots at each point
+                \filldraw[black] (\x:1cm) circle(0.4pt);
+                % draw each angle in degrees
+                \draw (\x:0.6cm) node[fill=white] {$\x^\circ$};
+        }
+
+        % draw each angle in radians
+        \foreach \x/\xtext in {
+            30/\frac{\pi}{6},
+            45/\frac{\pi}{4},
+            60/\frac{\pi}{3},
+            90/\frac{\pi}{2},
+            120/\frac{2\pi}{3},
+            135/\frac{3\pi}{4},
+            150/\frac{5\pi}{6},
+            180/\pi,
+            210/\frac{7\pi}{6},
+            225/\frac{5\pi}{4},
+            240/\frac{4\pi}{3},
+            270/\frac{3\pi}{2},
+            300/\frac{5\pi}{3},
+            315/\frac{7\pi}{4},
+            330/\frac{11\pi}{6},
+            360/2\pi}
+                \draw (\x:0.85cm) node[fill=white] {$\xtext$};
+
+        \foreach \x/\xtext/\y in {
+            % the coordinates for the first quadrant
+            30/\frac{\sqrt{3}}{2}/\frac{1}{2},
+            45/\frac{\sqrt{2}}{2}/\frac{\sqrt{2}}{2},
+            60/\frac{1}{2}/\frac{\sqrt{3}}{2},
+            % the coordinates for the second quadrant
+            150/-\frac{\sqrt{3}}{2}/\frac{1}{2},
+            135/-\frac{\sqrt{2}}{2}/\frac{\sqrt{2}}{2},
+            120/-\frac{1}{2}/\frac{\sqrt{3}}{2},
+            % the coordinates for the third quadrant
+            210/-\frac{\sqrt{3}}{2}/-\frac{1}{2},
+            225/-\frac{\sqrt{2}}{2}/-\frac{\sqrt{2}}{2},
+            240/-\frac{1}{2}/-\frac{\sqrt{3}}{2},
+            % the coordinates for the fourth quadrant
+            330/\frac{\sqrt{3}}{2}/-\frac{1}{2},
+            315/\frac{\sqrt{2}}{2}/-\frac{\sqrt{2}}{2},
+            300/\frac{1}{2}/-\frac{\sqrt{3}}{2}}
+                \draw (\x:1.25cm) node[fill=white] {$\left(\xtext,\y\right)$};
+
+        % draw the horizontal and vertical coordinates
+        % the placement is better this way
+        \draw (-1.25cm,0cm) node[above=1pt] {$(-1,0)$}
+              (1.25cm,0cm)  node[above=1pt] {$(1,0)$}
+              (0cm,-1.25cm) node[fill=white] {$(0,-1)$}
+              (0cm,1.25cm)  node[fill=white] {$(0,1)$};
+    \end{tikzpicture}
+
+% ---------------------------------------------
+\newpage
+
+\section{Литература}
+
+\begin{enumerate}
+\item Жика Ивановић, Срђан Огњановић: Математика - збирка задатака и тестова за II гимназије и техничких школа
+\item Мр. Вене Т. Богославов: Збирка решених задатака из Математике 2
+\item Ђ. Дугошија, Ж. Ивановић, Л. Милин: Тригонометрија
+\item Јован Д. Кечкић, Стана Ж. Никчеви, Драгана Д. Ранковић: Математика - припрема пријемног испита
+\item Јован Д Кечкић: Математика за 2. разред гимназије
+\item Општа енциклопедија математике Larousse
+\item Бронштејн, Семенђајев, Мусмол, Милинг: Математички приручник
+\item Ђорђе Кадијевић: Збирка нестандардних задатака из тригонометрије
+\end{enumerate}
+
+
+\end{document}
