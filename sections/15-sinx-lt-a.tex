@@ -1,0 +1,122 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Неједначина $\sin(x)<a,a\in\mathbb{R}$}
+
+\begin{enumerate}[label=\alph*)]
+\item $a<-1$, с обзиром да је $-1\leq\sin(x)\leq1$ у овом случају немамо решење, односно: $x=\O$
+\item $a>1$, сваки реалан број је решење, односно $x\in\mathbb{R}$
+\item $-1\leq a\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+Решавање:
+
+\begin{figure}
+\centering
+	\begin{tikzpicture}
+	\clip
+	  (-5.5,5.5) rectangle (5.5,-5.5);
+	\draw[->]
+	  (-5.5,0) -- (5,0) node[right] {$x$};
+	\draw[->]
+	  (0,-0.5) -- (0,5) node[above] {$y$};
+	\coordinate (O) at (0,0);
+	\coordinate (aux2) at (-4,{4*tan(40)});
+	\coordinate (aux3) at (4,{4*tan(40)});
+	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
+	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
+	\coordinate (leftDOWN) at (-5,-5);
+	\coordinate (rightDOWN) at (5,-5);
+	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
+	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
+	\draw[->]
+	  (O) -- (aux3) node[above] {$2\pi+arcsin{a}$};
+	\draw[->]
+	  (O) -- (aux2) node[above] {$\pi-arcsin{a}$};
+	\draw
+	  (left) -- (right);
+	\draw[thick,red!70!black]
+	  (O) circle (4);
+	\draw[red,<->] % arc
+		(O) ++ (leftArc) arc(-220:40:4.5);
+	\path[clip] (O) circle (4); % fill
+	\fill[draw=black, thick, pattern=north west lines]
+		(-5,{4*sin(40)}) -- (leftDOWN) -- (rightDOWN) -- (5,{4*sin(40)}) -- cycle;
+	\end{tikzpicture}
+\caption{}
+\end{figure}
+
+\begin{equation}
+\begin{split}
+\pi-\arcsin(a+2k\pi)<x<2\pi+\arcsin(a+2k\pi);k\in\mathbb{Z}\\
+x\in\bigcup\limits_{k\in\mathbb{Z}}(\pi-\arcsin(a+2k\pi);2\pi+\arcsin(a+2k\pi))
+\end{split}
+\end{equation}
+
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\sin(x)<-2$ , једначина нема решење
+\item $\sin(x)<2$, решење: $x\in\mathbb{R}$
+\item $\sin(x)<-\frac{\sqrt3}{2}$
+\end{enumerate}
+
+
+\[\frac{4\pi}{3}+2x\pi<x<\frac{5\pi}{3}+2k\pi,x\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}(\frac{4\pi}{3}+2k\pi,\frac{5\pi}{3}+2k\pi)\]
+
+ако решавамо по формули
+
+\[\pi-\arcsin\left(-\frac{\sqrt{3}}{2}\right)+2k\pi<x<2\pi+\arcsin\left(-\frac{\sqrt{3}}{2}\right)+2k\pi\]
+\[\pi+\frac{\pi}{3}+2k\pi<x<2\pi-\frac{\pi}{3}+2k\pi\]
+\[\frac{4\pi}{3}+2k\pi<x<\frac{5\pi}{3}+2k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{4\pi}{3}+2k\pi,\frac{5\pi}{3}+2k\pi\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину:
+
+\[\sin(x)\cos\left(\frac{\pi}{6}\right)+\cos(x)\sin\left(\frac{\pi}{6}\right)<\frac{1}{2}\]
+
+Решење:
+
+\[\sin(x)\cos\left(\frac{\pi}{6}\right)+\cos(x)\sin\left(\frac{\pi}{6}\right)<\frac{1}{2}\]
+\[\sin\left(x+\frac{\pi}{6}\right)<\frac{1}{2}\]
+\[\frac{5\pi}{6}+2k\pi<x+\frac{\pi}{6}<\frac{13\pi}{6}+2k\pi\]
+\[\frac{5\pi}{6}-\frac{\pi}{6}+2k\pi<x<\frac{13\pi}{6}-\frac{\pi}{6}+2k\pi\]
+\[\frac{4\pi}{6}+2k\pi<x<\frac{12\pi}{6}+2k\pi\]
+\[\frac{2\pi}{3}+2k\pi<x<2\pi+2k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{2\pi}{3}+2k\pi,2\pi+2k\pi\]
+
+Могли смо да решимо користећи формулу XX
+
+
+% ---------------------------------------------
+\subsubsection{Пример 3}
+
+Решити неједначину: $\sin(x)+\cos(x)<\sqrt{2}$
+
+Решење:
+
+\[\sin(x)+\cos(x)<\sqrt{2}\qquad/:\sqrt{2}\]
+\[\frac{1}{\sqrt{2}}\sin(x)+\frac{1}{\sqrt{2}}\cos(x)<\frac{\sqrt{2}}{\sqrt{2}}\]
+\[\frac{\sqrt{2}}{2}\sin(x)+\frac{\sqrt{2}}{2}\cos(x)<1\]
+\[(\frac{\sqrt{2}}{2}=\cos(\frac{\pi}{4});\frac{\sqrt{2}}{2}=\sin(\frac{\pi}{4}))\]
+\[\cos(\frac{\pi}{4})\sin(x)+\sin(\frac{\pi}{4})\cos(x)<1\]
+\[\sin(x+\frac{\pi}{4})<1\qquad\text{(на основу адиционе теореме)}\]
+\[\text{Пошто је} -1\leqslant\sin(x)\leqslant1\Rightarrow \text{решење је} \forall x\in\mathbb{R}\]
+\[\text{сем } \sin\left(x+\frac{\pi}{4}\right)=1\text{ односно }x+\frac{\pi}{4}=\frac{\pi}{2}+2k\pi,k\in\mathbb{Z}\]
+\centerline{даје решење}
+\[\forall x,x\neq\frac{\pi}{4}+2x\pi,k\in\mathbb{Z}\]
+
+
+
+\end{document}

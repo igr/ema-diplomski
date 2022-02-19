@@ -1,0 +1,77 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Неједначина $\cos(x)>b,b\in\mathbb{R}$}
+
+\begin{enumerate}[label=\alph*)]
+\item $b<-1$, неједначина нема решења, зато што је $-1\leq\cos(x)\leq1$
+\item $b>1$, с обзиром да је $-1\leq\cos(x)\leq1$ сваки реалан број је решење ове неједначине
+\item $-1\leq b\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+\[\arccos(b)+2k\pi<x<2\pi-\arccos(b)+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\arccos(b)+2k\pi,2\pi-\arccos(b)+2k\pi\]
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\cos(x)>3$
+\item $\cos(x)>-3$
+\item $\cos(x)>\frac{1}{2}$
+\end{enumerate}
+
+Решење:
+
+\begin{enumerate}[label=\alph*)]
+\item $\cos(x)>3$ , пошто је $-1\leqslant\cos(x)\leqslant1$ неједначина нема решење
+\item $\cos(x)>-3$, пошто је $-1\leqslant\cos(x)\leqslant1$ решење је $\forall x,x\in\mathbb{R}$
+\item $\cos(x)>\frac{1}{2}$
+\end{enumerate}
+
+\[-\frac{\pi}{2}+2k\pi<x<\frac{\pi}{3}+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}-\frac{\pi}{3}+2k\pi,\frac{\pi}{3}+2k\pi.\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину: $2\cos(3x-\frac{\pi}{3})\ge\sqrt{2}$
+
+Решење:
+
+\[2\cos\left(3x-\frac{\pi}{3}\right)\geq\sqrt{2}\qquad/:2\]
+\[\cos\left(3x-\frac{\pi}{3}\right)\geqslant\frac{\sqrt{2}}{2}\]
+\[-\frac{\pi}{4}+2k\pi\leq3x-\frac{\pi}{3}\leq\frac{\pi}{4}+2k\pi\]
+\[-\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\leq3x\leq\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\]
+\[\frac{-3\pi+4\pi}{12}+2k\pi\leq3x\leq\frac{3\pi+4\pi}{12}+2k\pi\]
+\[\frac{\pi}{12}+2k\pi\leq3x\leq\frac{7\pi}{12}+2k\pi\qquad/:3\]
+\[\frac{\pi}{36}+\frac{2k\pi}{3}\leqslant\frac{7\pi}{36}+\frac{2k\pi}{3},k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{x\in\mathbb{Z}}\left[\frac{\pi}{36}+\frac{2k\pi}{3},\frac{7\pi}{36}+\frac{2k\pi}{3}\right]\]
+
+% ---------------------------------------------
+\subsubsection{Пример 3}
+
+Решити неједначину: $\sin(x)-\cos(x)\ge1$
+
+Решење:
+
+\[\sin(x)-\cos(x)\geqslant1\qquad/:\sqrt{2}\]
+\[\frac{1}{\sqrt{2}}\sin(x)-\frac{1}{\sqrt{2}}\cos(x)\geqslant\frac{1}{\sqrt{2}}\qquad/(-1)\]
+\[\frac{\sqrt{2}}{2}\cos(x)-\frac{\sqrt{2}}{2}\sin(x)\leq-\frac{\sqrt{2}}{2}\]
+\[\cos\left(\frac{\pi}{4}\right)\cos(x)-\sin\left(\frac{\pi}{4}\right)\sin(x)\leqslant-\frac{\sqrt{2}}{2}\]
+\[\cos\left(x+\frac{\pi}{4}\right)\leq\frac{-\sqrt{2}}{2}\]
+\[\frac{3\pi}{4}+2k\pi\leqslant x+\frac{\pi}{4}\leqslant\frac{5\pi}{4}+2k\pi\]
+\[\frac{3\pi}{4}-\frac{\pi}{4}+2k\pi\leqslant x\leqslant\frac{5\pi}{4}-\frac{\pi}{4}+2k\pi\]
+\[\frac{2\pi}{4}+2k\pi\leqslant x\leqslant\frac{4\pi}{4}+2k\pi\]
+\[\frac{\pi}{2}+2k\pi\leqslant x\leqslant\pi+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\left[\frac{\pi}{2}+2k\pi,\pi+2k\pi\right]\]
+
+
+\end{document}

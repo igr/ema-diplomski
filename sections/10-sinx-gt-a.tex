@@ -1,0 +1,111 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Неједначина $\sin(x)>a,a\in\mathbb{R}$}
+
+\begin{enumerate}[label=\alph*)]
+\item $a<-1$, сваки број је решење тригонометријске неједначине, зато што је $-1\leq\sin(x)\leq1$
+\item $a>1$, неједначина нема решење
+\item $-1\leq a\leq-1$, приступамо решавању тригонометријске неједначине
+\end{enumerate}
+
+Решавање:
+
+\subfile{fig-A}
+
+Решење:
+
+\begin{equation}
+\begin{split}
+\arcsin(a+2k\pi)<x<\pi-\arcsin(a+2k\pi);k\in\mathbb{Z}\\
+x\in\bigcup\limits_{k\in\mathbb{Z}}\arcsin(a+2k\pi);\pi-\arcsin(a+2k\pi)	
+\end{split}
+\end{equation}
+
+% ---------------------------------------------
+
+\subsubsection{Пример 1}
+
+Решити неједначине:
+
+\begin{enumerate}[label=\alph*)]
+\item $\sin(x)>-3$
+\item $\sin(x)>3$
+\item $\sin(x)>\frac{1}{2}$
+\end{enumerate}
+
+Решење:
+
+\begin{enumerate}[label=\alph*)]
+\item $\sin(x)>-3$, с обзиром да је $-1\le\sin(x)\le1$ следи да је решење било који реалан број, односно  $x\in\mathbb{R}$
+\item $\sin(x)>3$, једначина нема решење због $-1\le\sin(x)\le1$
+\item $\sin(x)>\frac{1}{2}$
+\end{enumerate}
+
+
+\begin{figure}
+\centering
+	\begin{tikzpicture}
+	\clip
+	  (-5.5,5.5) rectangle (5.5,-0.5);
+	\draw[->]
+	  (-5.5,0) -- (5,0) node[right] {$x$};
+	\draw[->]
+	  (0,-0.5) -- (0,5) node[above] {$y$};
+	\coordinate (O) at (0,0);
+	\coordinate (aux2) at (-4,{4*tan(40)});
+	\coordinate (aux3) at (4,{4*tan(40)});
+	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
+	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
+	\coordinate (leftUP) at (-{4*cos(40)},5);
+	\coordinate (rightUP) at ({4*cos(40)},5);
+	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
+	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
+	\draw[->]
+	  (O) -- (aux3) node[above] {$\arcsin{\frac{1}{2}}=\frac{\pi}{2}$};
+	\draw[->]
+	  (O) -- (aux2);
+	\draw
+	  (left) -- (right);
+	\draw[thick,red!70!black] 
+	  (O) circle (4);
+	\draw[red,<->] % arc
+		(O) ++ (leftArc) arc(140:40:4.5);
+	\path[clip] (O) circle (4); % fill
+	\fill[draw=black, thick, pattern=north west lines]
+		(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
+	\end{tikzpicture}
+\caption{}
+\end{figure}
+
+Решење:
+
+\[\frac{\pi}{6}+2k\pi<x<\frac{5\pi}{6}+2k\pi,k\in\mathbb{Z}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}\frac{\pi}{6}+2k\pi,\frac{5\pi}{6}+2k\pi\]
+
+% ---------------------------------------------
+
+\subsubsection{Пример 2}
+
+Решити неједначину: $2\sin(2x-\frac{\pi}{3})=1$
+
+Решење:
+
+\[2\sin(2x-\frac{\pi}{3})=1\]
+
+ако решавамо по формули
+
+\[\arcsin\left(\frac{1}{2}+2k\pi\right)<2x-\frac{\pi}{3}<\pi-\arcsin\left(\frac{1}{2}+2k\pi\right)\]
+\[\frac{\pi}{6}+2k\pi<2x-\frac{\pi}{3}<\pi-\frac{\pi}{6}+2k\pi\]
+\[\frac{\pi}{6}+2k\pi<2x-\frac{\pi}{3}<\frac{5\pi}{6}+2k\pi\]
+\[\frac{\pi}{3}+\frac{\pi}{6}+2k\pi<2x<\frac{\pi}{3}+\frac{5\pi}{6}+2k\pi\]
+\[\frac{\pi}{2}+2k\pi<2x<\frac{7\pi}{6}+2k\pi\]
+\[\frac{\pi}{4}+k\pi<x<\frac{7\pi}{12}+k\pi,k\in\mathbb{R}\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}(\frac{\pi}{4}+k\pi,\frac{7\pi}{12}+k\pi)\]
+
+
+
+
+\end{document}

@@ -12,41 +12,29 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{tikz}
+\usepackage{subfiles}
 \usetikzlibrary{angles,quotes,patterns,arrows.meta}
 
 \tikzset{>={Latex[width=3mm,length=3mm]}} % bigger arrowheads
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
+\usepackage{subfiles} % should be last in the preamble
+
+\title{Тригонометријске неједначине}
 \author{Ema Spasić}
 
 \begin{document}
 
 \tableofcontents
 
-\newpage
 \setlength{\parindent}{2em}
 \setlength{\parskip}{1em}
 
+% ---------------------------------------------
+\newpage
+\section{Увод}\label{Увод}
 
-\hypertarget{Увод}{
-\section{Увод}\label{Увод}}
-
-Тригонометрија је део математике и геометрије која се бави израчунавањем
-елемената троугла, проналажењем зависности у њиховим односима, као и
-успостављањем функција углова који их дефинишу.
-
-Првобитно је искључиво израчунавана вредност елемената троугла.
-
-Њен првобитни циљ је данас превазиђен и примена тригонометрије на основу
-израчунавања тригонометријских функција, ван сваког посматрања троугла,
-учинило је од тригонометрије значајну област математике и геометрије.
-Примењује се у различитим областима као што су инжењерство, архитектура,
-геодезија, навигација и астрономија.
-
-Особа одговорна за "модерну" тригонометрију био је ренесансни
-математичар из Немачке \hl{Јохан Милер фин Кенигсберг} - познатији као
-\hl{Регмомонтанус}. Био је први који је тригонометрију третирао као субјекат
-по себи. Даљи напредак тригонометрије направио је Никола Коперник.
+\subfile{sections/01-uvod}
 
 % ---------------------------------------------
 \newpage
@@ -64,376 +52,10 @@
 формула и трансформација своди се на основну тригонометријске
 неједначину.
 
-% ---------------------------------------------
-
-\subsection{Неједначина $\sin(x)>a,a\in\mathbb{R}$}
-
-\begin{enumerate}[label=\alph*)]
-\item $a<-1$, сваки број је решење тригонометријске неједначине, зато што је $-1\leq\sin(x)\leq1$
-\item $a>1$, неједначина нема решење
-\item $-1\leq a\leq-1$, приступамо решавању тригонометријске неједначине
-\end{enumerate}
-
-Решавање:
-
-\begin{figure}
-\centering
-\begin{tikzpicture}
-\clip
-  (-5.5,5.5) rectangle (5.5,-0.5);
-\draw[->]
-  (-5.5,0) -- (5,0) node[right] {$x$};
-\draw[->]
-  (0,-0.5) -- (0,5) node[above] {$y$};
-\coordinate (O) at (0,0);
-\coordinate (aux2) at (-4,{4*tan(40)});
-\coordinate (aux3) at (4,{4*tan(40)});
-\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
-\coordinate (right) at ({4*cos(40)},{4*sin(40)});
-\coordinate (leftUP) at (-{4*cos(40)},5);
-\coordinate (rightUP) at ({4*cos(40)},5);
-\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
-\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
-\draw[->]
-  (O) -- (aux3) node[above] {$\arcsin{a}$};
-\draw[->]
-  (O) -- (aux2);
-\draw
-  (left) -- (right);
-\draw[thick,red!70!black] 
-  (O) circle (4);
-\draw[red,<->] % arc
-	(O) ++ (leftArc) arc(140:40:4.5);
-\path[clip] (O) circle (4); % fill
-\fill[draw=black, thick, pattern=north west lines]
-	(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
-\end{tikzpicture}
-\caption{}
-\end{figure}
-
-Решење:
-
-\begin{equation}
-\begin{split}
-\arcsin(a+2k\pi)<x<\pi-\arcsin(a+2k\pi);k\in\mathbb{Z}\\
-x\in\bigcup\limits_{k\in\mathbb{Z}}\arcsin(a+2k\pi);\pi-\arcsin(a+2k\pi)	
-\end{split}
-\end{equation}
-
-% ---------------------------------------------
-
-\subsubsection{Пример 1}
-
-Решити неједначине:
-
-\begin{enumerate}[label=\alph*)]
-\item $\sin(x)>-3$
-\item $\sin(x)>3$
-\item $\sin(x)>\frac{1}{2}$
-\end{enumerate}
-
-Решење:
-
-\begin{enumerate}[label=\alph*)]
-\item $\sin(x)>-3$, с обзиром да је $-1\le\sin(x)\le1$ следи да је решење било који реалан број, односно  $x\in\mathbb{R}$
-\item $\sin(x)>3$, једначина нема решење због $-1\le\sin(x)\le1$
-\item $\sin(x)>\frac{1}{2}$
-\end{enumerate}
-
-
-\begin{figure}
-\centering
-	\begin{tikzpicture}
-	\clip
-	  (-5.5,5.5) rectangle (5.5,-0.5);
-	\draw[->]
-	  (-5.5,0) -- (5,0) node[right] {$x$};
-	\draw[->]
-	  (0,-0.5) -- (0,5) node[above] {$y$};
-	\coordinate (O) at (0,0);
-	\coordinate (aux2) at (-4,{4*tan(40)});
-	\coordinate (aux3) at (4,{4*tan(40)});
-	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
-	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
-	\coordinate (leftUP) at (-{4*cos(40)},5);
-	\coordinate (rightUP) at ({4*cos(40)},5);
-	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
-	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
-	\draw[->]
-	  (O) -- (aux3) node[above] {$\arcsin{\frac{1}{2}}=\frac{\pi}{2}$};
-	\draw[->]
-	  (O) -- (aux2);
-	\draw
-	  (left) -- (right);
-	\draw[thick,red!70!black] 
-	  (O) circle (4);
-	\draw[red,<->] % arc
-		(O) ++ (leftArc) arc(140:40:4.5);
-	\path[clip] (O) circle (4); % fill
-	\fill[draw=black, thick, pattern=north west lines]
-		(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
-	\end{tikzpicture}
-\caption{}
-\end{figure}
-
-Решење:
-
-\[\frac{\pi}{6}+2k\pi<x<\frac{5\pi}{6}+2k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\frac{\pi}{6}+2k\pi,\frac{5\pi}{6}+2k\pi\]
-
-% ---------------------------------------------
-
-\subsubsection{Пример 2}
-
-Решити неједначину: $2\sin(2x-\frac{\pi}{3})=1$
-
-Решење:
-
-\[2\sin(2x-\frac{\pi}{3})=1\]
-
-ако решавамо по формули
-
-\[\arcsin\left(\frac{1}{2}+2k\pi\right)<2x-\frac{\pi}{3}<\pi-\arcsin\left(\frac{1}{2}+2k\pi\right)\]
-\[\frac{\pi}{6}+2k\pi<2x-\frac{\pi}{3}<\pi-\frac{\pi}{6}+2k\pi\]
-\[\frac{\pi}{6}+2k\pi<2x-\frac{\pi}{3}<\frac{5\pi}{6}+2k\pi\]
-\[\frac{\pi}{3}+\frac{\pi}{6}+2k\pi<2x<\frac{\pi}{3}+\frac{5\pi}{6}+2k\pi\]
-\[\frac{\pi}{2}+2k\pi<2x<\frac{7\pi}{6}+2k\pi\]
-\[\frac{\pi}{4}+k\pi<x<\frac{7\pi}{12}+k\pi,k\in\mathbb{R}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}(\frac{\pi}{4}+k\pi,\frac{7\pi}{12}+k\pi)\]
-
-% ---------------------------------------------
-
-\subsection{Неједначина $\sin(x)<a,a\in\mathbb{R}$}
-
-\begin{enumerate}[label=\alph*)]
-\item $a<-1$, с обзиром да је $-1\leq\sin(x)\leq1$ у овом случају немамо решење, односно: $x=\O$
-\item $a>1$, сваки реалан број је решење, односно $x\in\mathbb{R}$
-\item $-1\leq a\leq-1$, приступамо решавању тригонометријске неједначине
-\end{enumerate}
-
-Решавање:
-
-\begin{figure}
-\centering
-	\begin{tikzpicture}
-	\clip
-	  (-5.5,5.5) rectangle (5.5,-5.5);
-	\draw[->]
-	  (-5.5,0) -- (5,0) node[right] {$x$};
-	\draw[->]
-	  (0,-0.5) -- (0,5) node[above] {$y$};
-	\coordinate (O) at (0,0);
-	\coordinate (aux2) at (-4,{4*tan(40)});
-	\coordinate (aux3) at (4,{4*tan(40)});
-	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
-	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
-	\coordinate (leftDOWN) at (-5,-5);
-	\coordinate (rightDOWN) at (5,-5);
-	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
-	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
-	\draw[->]
-	  (O) -- (aux3) node[above] {$2\pi+arcsin{a}$};
-	\draw[->]
-	  (O) -- (aux2) node[above] {$\pi-arcsin{a}$};
-	\draw
-	  (left) -- (right);
-	\draw[thick,red!70!black] 
-	  (O) circle (4);
-	\draw[red,<->] % arc
-		(O) ++ (leftArc) arc(-220:40:4.5);
-	\path[clip] (O) circle (4); % fill
-	\fill[draw=black, thick, pattern=north west lines]
-		(-5,{4*sin(40)}) -- (leftDOWN) -- (rightDOWN) -- (5,{4*sin(40)}) -- cycle;
-	\end{tikzpicture}
-\caption{}
-\end{figure}
-
-\begin{equation}
-\begin{split}
-\pi-\arcsin(a+2k\pi)<x<2\pi+\arcsin(a+2k\pi);k\in\mathbb{Z}\\
-x\in\bigcup\limits_{k\in\mathbb{Z}}(\pi-\arcsin(a+2k\pi);2\pi+\arcsin(a+2k\pi))
-\end{split}
-\end{equation}
-
-
-% ---------------------------------------------
-\subsubsection{Пример 1}
-
-Решити неједначине:
-
-\begin{enumerate}[label=\alph*)]
-\item $\sin(x)<-2$ , једначина нема решење
-\item $\sin(x)<2$, решење: $x\in\mathbb{R}$
-\item $\sin(x)<-\frac{\sqrt3}{2}$
-\end{enumerate}
-
-
-\[\frac{4\pi}{3}+2x\pi<x<\frac{5\pi}{3}+2k\pi,x\in\mathbb{Z}\]
-\[x\in\bigcup_{k\in\mathbb{Z}}(\frac{4\pi}{3}+2k\pi,\frac{5\pi}{3}+2k\pi)\]
-
-ако решавамо по формули
-
-\[\pi-\arcsin\left(-\frac{\sqrt{3}}{2}\right)+2k\pi<x<2\pi+\arcsin\left(-\frac{\sqrt{3}}{2}\right)+2k\pi\]
-\[\pi+\frac{\pi}{3}+2k\pi<x<2\pi-\frac{\pi}{3}+2k\pi\]
-\[\frac{4\pi}{3}+2k\pi<x<\frac{5\pi}{3}+2k\pi\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\frac{4\pi}{3}+2k\pi,\frac{5\pi}{3}+2k\pi\]
-
-
-% ---------------------------------------------
-\subsubsection{Пример 2}
-
-Решити неједначину:
-
-\[\sin(x)\cos\left(\frac{\pi}{6}\right)+\cos(x)\sin\left(\frac{\pi}{6}\right)<\frac{1}{2}\]
-
-Решење:
-
-\[\sin(x)\cos\left(\frac{\pi}{6}\right)+\cos(x)\sin\left(\frac{\pi}{6}\right)<\frac{1}{2}\]
-\[\sin\left(x+\frac{\pi}{6}\right)<\frac{1}{2}\]
-\[\frac{5\pi}{6}+2k\pi<x+\frac{\pi}{6}<\frac{13\pi}{6}+2k\pi\]
-\[\frac{5\pi}{6}-\frac{\pi}{6}+2k\pi<x<\frac{13\pi}{6}-\frac{\pi}{6}+2k\pi\]
-\[\frac{4\pi}{6}+2k\pi<x<\frac{12\pi}{6}+2k\pi\]
-\[\frac{2\pi}{3}+2k\pi<x<2\pi+2k\pi\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\frac{2\pi}{3}+2k\pi,2\pi+2k\pi\]
-
-Могли смо да решимо користећи формулу XX
-
-
-% ---------------------------------------------
-\subsubsection{Пример 3}
-
-Решити неједначину: $\sin(x)+\cos(x)<\sqrt{2}$
-
-Решење:
-
-\[\sin(x)+\cos(x)<\sqrt{2}\qquad/:\sqrt{2}\]
-\[\frac{1}{\sqrt{2}}\sin(x)+\frac{1}{\sqrt{2}}\cos(x)<\frac{\sqrt{2}}{\sqrt{2}}\]
-\[\frac{\sqrt{2}}{2}\sin(x)+\frac{\sqrt{2}}{2}\cos(x)<1\]
-\[(\frac{\sqrt{2}}{2}=\cos(\frac{\pi}{4});\frac{\sqrt{2}}{2}=\sin(\frac{\pi}{4}))\]
-\[\cos(\frac{\pi}{4})\sin(x)+\sin(\frac{\pi}{4})\cos(x)<1\]
-\[\sin(x+\frac{\pi}{4})<1\qquad\text{(на основу адиционе теореме)}\]
-\[\text{Пошто је} -1\leqslant\sin(x)\leqslant1\Rightarrow \text{решење је} \forall x\in\mathbb{R}\]
-\[\text{сем } \sin\left(x+\frac{\pi}{4}\right)=1\text{ односно }x+\frac{\pi}{4}=\frac{\pi}{2}+2k\pi,k\in\mathbb{Z}\]
-\centerline{даје решење}
-\[\forall x,x\neq\frac{\pi}{4}+2x\pi,k\in\mathbb{Z}\]
-
-
-
-% ---------------------------------------------
-\subsection{Неједначина $\cos(x)<b,b\in\mathbb{R}$}
-
-\begin{enumerate}[label=\alph*)]
-\item $b<-1$, с обзиром да је $-1\leq\cos(x)\leq1$ сваки реалан број је решење ове неједначине
-\item $b>1$, неједначина нема решења, зато што је $-1\leq\cos(x)\leq1$
-\item $-1\leq b\leq-1$, приступамо решавању тригонометријске неједначине
-\end{enumerate}
-
-\[\arccos(b)+2k\pi<x<2\pi-\arccos(b)+2k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(\arccos(b)+2k\pi,2\pi-\arccos(b)+2k\pi\right)\]
-
-
-% ---------------------------------------------
-\subsubsection{Пример 1}
-
-Решити неједначине:
-
-\begin{enumerate}[label=\alph*)]
-\item $\cos(x)<4$
-\item $\cos(x)<-\frac{5}{2}$
-\item $\cos(x)<-\frac{\sqrt(3)}{2}$
-\end{enumerate}
-
-Решење:
-
-\begin{enumerate}[label=\alph*)]
-\item $\cos(x)<4$, пошто је $-1\leqslant\cos(x)\leqslant1$ решење је $\forall x,x\in\mathbb{R}$
-\item $\cos(x)<-\frac{5}{2}$, неједначина нема решење
-\item $\cos(x)<-\frac{\sqrt(3)}{2}$
-\end{enumerate}
-
-\[\frac{2\pi}{3}+2k\pi<x<\frac{4\pi}{3}+2k\pi,k\in\mathbb{R}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\frac{2\pi}{3}+2k\pi,\frac{4\pi}{3}+2k\pi\]
-
-
-% ---------------------------------------------
-\subsection{Неједначина $\cos(x)>b,b\in\mathbb{R}$}
-
-
-\begin{enumerate}[label=\alph*)]
-\item $b<-1$, неједначина нема решења, зато што је $-1\leq\cos(x)\leq1$
-\item $b>1$, с обзиром да је $-1\leq\cos(x)\leq1$ сваки реалан број је решење ове неједначине
-\item $-1\leq b\leq-1$, приступамо решавању тригонометријске неједначине
-\end{enumerate}
-
-\[\arccos(b)+2k\pi<x<2\pi-\arccos(b)+2k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\arccos(b)+2k\pi,2\pi-\arccos(b)+2k\pi\]
-
-
-\subsubsection{Пример 1}
-
-Решити неједначине:
-
-\begin{enumerate}[label=\alph*)]
-\item $\cos(x)>3$
-\item $\cos(x)>-3$
-\item $\cos(x)>\frac{1}{2}$
-\end{enumerate}
-
-Решење:
-
-\begin{enumerate}[label=\alph*)]
-\item $\cos(x)>3$ , пошто је $-1\leqslant\cos(x)\leqslant1$ неједначина нема решење
-\item $\cos(x)>-3$, пошто је $-1\leqslant\cos(x)\leqslant1$ решење је $\forall x,x\in\mathbb{R}$
-\item $\cos(x)>\frac{1}{2}$
-\end{enumerate}
-
-\[-\frac{\pi}{2}+2k\pi<x<\frac{\pi}{3}+2k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}-\frac{\pi}{3}+2k\pi,\frac{\pi}{3}+2k\pi.\]
-
-
-% ---------------------------------------------
-\subsubsection{Пример 2}
-
-Решити неједначину: $2\cos(3x-\frac{\pi}{3})\ge\sqrt{2}$
-
-Решење:
-
-\[2\cos\left(3x-\frac{\pi}{3}\right)\geq\sqrt{2}\qquad/:2\]
-\[\cos\left(3x-\frac{\pi}{3}\right)\geqslant\frac{\sqrt{2}}{2}\]
-\[-\frac{\pi}{4}+2k\pi\leq3x-\frac{\pi}{3}\leq\frac{\pi}{4}+2k\pi\]
-\[-\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\leq3x\leq\frac{\pi}{4}+\frac{\pi}{3}+2k\pi\]
-\[\frac{-3\pi+4\pi}{12}+2k\pi\leq3x\leq\frac{3\pi+4\pi}{12}+2k\pi\]
-\[\frac{\pi}{12}+2k\pi\leq3x\leq\frac{7\pi}{12}+2k\pi\qquad/:3\]
-\[\frac{\pi}{36}+\frac{2k\pi}{3}\leqslant\frac{7\pi}{36}+\frac{2k\pi}{3},k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{x\in\mathbb{Z}}\left[\frac{\pi}{36}+\frac{2k\pi}{3},\frac{7\pi}{36}+\frac{2k\pi}{3}\right]\]
-
-% ---------------------------------------------
-\subsubsection{Пример 3}
-
-Решити неједначину: $\sin(x)-\cos(x)\ge1$
-
-Решење:
-
-\[\sin(x)-\cos(x)\geqslant1\qquad/:\sqrt{2}\]
-\[\frac{1}{\sqrt{2}}\sin(x)-\frac{1}{\sqrt{2}}\cos(x)\geqslant\frac{1}{\sqrt{2}}\qquad/(-1)\]
-\[\frac{\sqrt{2}}{2}\cos(x)-\frac{\sqrt{2}}{2}\sin(x)\leq-\frac{\sqrt{2}}{2}\]
-\[\cos\left(\frac{\pi}{4}\right)\cos(x)-\sin\left(\frac{\pi}{4}\right)\sin(x)\leqslant-\frac{\sqrt{2}}{2}\]
-\[\cos\left(x+\frac{\pi}{4}\right)\leq\frac{-\sqrt{2}}{2}\]
-\[\frac{3\pi}{4}+2k\pi\leqslant x+\frac{\pi}{4}\leqslant\frac{5\pi}{4}+2k\pi\]
-\[\frac{3\pi}{4}-\frac{\pi}{4}+2k\pi\leqslant x\leqslant\frac{5\pi}{4}-\frac{\pi}{4}+2k\pi\]
-\[\frac{2\pi}{4}+2k\pi\leqslant x\leqslant\frac{4\pi}{4}+2k\pi\]
-\[\frac{\pi}{2}+2k\pi\leqslant x\leqslant\pi+2k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\left[\frac{\pi}{2}+2k\pi,\pi+2k\pi\right]\]
+\subfile{sections/10-sinx-gt-a}
+\subfile{sections/15-sinx-lt-a}
+\subfile{sections/20-cosx-lt-b}
+\subfile{sections/25-cosx-gt-b}
 
 % ---------------------------------------------
 \newpage
@@ -441,111 +63,11 @@ x\in\bigcup\limits_{k\in\mathbb{Z}}(\pi-\arcsin(a+2k\pi);2\pi+\arcsin(a+2k\pi))
 
 Ове неједначине за разлику од оних са $\sin(x)$ и $\cos(x)$ увек имају решења с обзиром да $\tg(x)$ и $\ctg(x)$ узимају вредности из целог скупа $\mathbb{R}$.
 
-% ---------------------------------------------
-\subsection{Неједначина $\tg(x)>a,a\in\mathbb{R}$}
+\subfile{sections/30-tgx-gt-a}
+\subfile{sections/35-tgx-lt-a}
+\subfile{sections/40-ctgx-gt-a}
+\subfile{sections/45-ctgx-lt-a}
 
-Решење:
-
-\[\arctan(a)+k\pi<x<\frac{\pi}{2}+k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(\arctg(a)+k\pi,\frac{\pi}{2}+k\pi\right)\]
-
-% ---------------------------------------------
-\subsubsection{Primer 1}
-
-Решити неједначину: $3\tg(x)\ge\sqrt3$
-
-Решење:
-
-\[3\tg(x)\geqslant\sqrt{3}\]
-\[\tg(x)\geqslant\frac{\sqrt{3}}{3}\]
-\[\frac{\pi}{6}+2k\pi\leqslant x\leqslant\frac{\pi}{2}+k\pi\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\left[\frac{\pi}{6}+k\pi,\frac{\pi}{2}+k\pi\right]\]
-
-% ---------------------------------------------
-\subsubsection{Primer 2}
-
-Решити неједначину: $\tg(3x-\frac{\pi}{4})\ge\sqrt3$
-
-Решење:
-
-\[\frac{\pi}{3}+k\pi<3x-\frac{\pi}{4}<\frac{\pi}{2}+k\pi\]
-\[\frac{\pi}{3}+\frac{\pi}{4}+k\pi<3\times<\frac{\pi}{2}+\frac{\pi}{4}+k\pi\]
-\[\frac{7\pi}{12}+k\pi<3x<\frac{3\pi}{4}+k\pi\qquad/:3\]
-\[\frac{7\pi}{36}+\frac{k\pi}{3}<x<\frac{\pi}{4}+\frac{k\pi}{3}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(\frac{7\pi}{36}+\frac{k\pi}{3},\frac{\pi}{4}+\frac{k\pi}{3}\right)\]
-
-% ---------------------------------------------
-\subsection{Неједначина $\tg(x)<a,a\in\mathbb{R}$}
-
-Решење:
-
-\[-\frac{\pi}{2}+k\pi<x<\arctg(a)+k\pi,k\in\mathbb{Z}\]
-\centerline{или}
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{2}+k\pi,\arctan(a)+k\pi\right)\]
-
-% ---------------------------------------------
-\subsubsection{Primer 1}
-
-Решити неједначину: $\tg(2x+\frac{\pi}{3})\le1$
-
-Решење:
-
-\[-\frac{\pi}{2}+k\pi<2x+\frac{\pi}{3}<\frac{\pi}{4}+k\pi\]
-\[-\frac{\pi}{2}-\frac{\pi}{3}+k\pi<2x<\frac{\pi}{4}-\frac{\pi}{3}+k\pi\]
-\[-\frac{5\pi}{6}+k\pi<2x<-\frac{\pi}{12}+k\pi\qquad/:2\]
-\[-\frac{5\pi}{12}+\frac{k\pi}{2}<x<-\frac{\pi}{24}+\frac{k\pi}{2},k\in\mathbb{Z}\]
-или
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{5\pi}{12}+\frac{k\pi}{2},-\frac{\pi}{24}+\frac{k\pi}{2}\right)\]
-
-
-% ---------------------------------------------
-\subsection{Неједначина $\ctg(x)>a,a\in\mathbb{R}$}
-
-Решење:
-
-\[k\pi<x<\arctg(a)+k\pi,k\in\mathbb{R}\]
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(k\pi,\arctg(a)+k\pi\right)\]
-
-
-% ---------------------------------------------
-\subsubsection{Primer 1}
-
-Решити неједначину:
-
-\[\ctg(2x+\frac{\pi}{4})>\frac{\sqrt{3}}{3}\]
-
-Решење:
-
-\[k\pi<2x+\frac{\pi}{4}<\frac{\pi}{3}+k\pi\]
-\[-\frac{\pi}{4}+k\pi<2x<\frac{\pi}{3}-\frac{\pi}{4}+k\pi\]
-\[-\frac{\pi}{4}+k\pi<2x<\frac{\pi}{12}+k\pi,k\in\mathbb{Z}\]
-\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{4}+k\pi,\frac{\pi}{12}+k\pi\right)\]
-
-% ---------------------------------------------
-\subsection{Неједначина $\ctg(x)<a,a\in\mathbb{R}$}
-
-Решење:
-
-\[\arctg(a)+k\pi<x<\pi+k\pi\]
-\[x\in\bigcup_{k\in\mathbb{Z}}(\arctg(a)+k\pi,\pi+k\pi)\]
-
-% ---------------------------------------------
-\subsubsection{Primer 1}
-
-Решити неједначину:
-
-\[\ctg\left(3x+\frac{\pi}{6}\right)<-\sqrt{3}\]
-
-Решење:
-
-\[\frac{5\pi}{6}+\pi\pi<3x+\frac{\pi}{6}<\pi+k\pi\]
-\[\frac{5\pi}{6}-\frac{\pi}{6}+k\pi<3x<\pi-\frac{\pi}{6}+k\pi\]
-\[\frac{4\pi}{6}+k\pi<3x<\frac{5\pi}{6}+k\pi\]
-\[\frac{2\pi}{3}+k\pi<3x<\frac{5\pi}{6}+k\pi\qquad/:3\]
-\[\frac{2\pi}{9}+\frac{k\pi}{3}<x<\frac{5\pi}{18}+\frac{k\pi}{3}\]
 
 
 % ---------------------------------------------
@@ -892,71 +414,9 @@ Zadatak je definisan ako je $\cos(x)\neq0$ и $\ctg(x)\neq0$ $\Rightarrow x\neq\
 
 % ---------------------------------------------
 \newpage
-
 \section{Тригонометријски круг}
-    \hspace*{-2em}\begin{tikzpicture}[scale=5,cap=round,>=latex]
-        % draw the coordinates
-        \draw[->] (-1.5cm,0cm) -- (1.5cm,0cm) node[right,fill=white] {$x$};
-        \draw[->] (0cm,-1.5cm) -- (0cm,1.5cm) node[above,fill=white] {$y$};
 
-        % draw the unit circle
-        \draw[thick] (0cm,0cm) circle(1cm);
-
-        \foreach \x in {0,30,...,360} {
-                % lines from center to point
-                \draw[gray] (0cm,0cm) -- (\x:1cm);
-                % dots at each point
-                \filldraw[black] (\x:1cm) circle(0.4pt);
-                % draw each angle in degrees
-                \draw (\x:0.6cm) node[fill=white] {$\x^\circ$};
-        }
-
-        % draw each angle in radians
-        \foreach \x/\xtext in {
-            30/\frac{\pi}{6},
-            45/\frac{\pi}{4},
-            60/\frac{\pi}{3},
-            90/\frac{\pi}{2},
-            120/\frac{2\pi}{3},
-            135/\frac{3\pi}{4},
-            150/\frac{5\pi}{6},
-            180/\pi,
-            210/\frac{7\pi}{6},
-            225/\frac{5\pi}{4},
-            240/\frac{4\pi}{3},
-            270/\frac{3\pi}{2},
-            300/\frac{5\pi}{3},
-            315/\frac{7\pi}{4},
-            330/\frac{11\pi}{6},
-            360/2\pi}
-                \draw (\x:0.85cm) node[fill=white] {$\xtext$};
-
-        \foreach \x/\xtext/\y in {
-            % the coordinates for the first quadrant
-            30/\frac{\sqrt{3}}{2}/\frac{1}{2},
-            45/\frac{\sqrt{2}}{2}/\frac{\sqrt{2}}{2},
-            60/\frac{1}{2}/\frac{\sqrt{3}}{2},
-            % the coordinates for the second quadrant
-            150/-\frac{\sqrt{3}}{2}/\frac{1}{2},
-            135/-\frac{\sqrt{2}}{2}/\frac{\sqrt{2}}{2},
-            120/-\frac{1}{2}/\frac{\sqrt{3}}{2},
-            % the coordinates for the third quadrant
-            210/-\frac{\sqrt{3}}{2}/-\frac{1}{2},
-            225/-\frac{\sqrt{2}}{2}/-\frac{\sqrt{2}}{2},
-            240/-\frac{1}{2}/-\frac{\sqrt{3}}{2},
-            % the coordinates for the fourth quadrant
-            330/\frac{\sqrt{3}}{2}/-\frac{1}{2},
-            315/\frac{\sqrt{2}}{2}/-\frac{\sqrt{2}}{2},
-            300/\frac{1}{2}/-\frac{\sqrt{3}}{2}}
-                \draw (\x:1.25cm) node[fill=white] {$\left(\xtext,\y\right)$};
-
-        % draw the horizontal and vertical coordinates
-        % the placement is better this way
-        \draw (-1.25cm,0cm) node[above=1pt] {$(-1,0)$}
-              (1.25cm,0cm)  node[above=1pt] {$(1,0)$}
-              (0cm,-1.25cm) node[fill=white] {$(0,-1)$}
-              (0cm,1.25cm)  node[fill=white] {$(0,1)$};
-    \end{tikzpicture}
+\subfile{sections/99-trig-krug}
 
 % ---------------------------------------------
 \newpage
