@@ -1,0 +1,34 @@
+\begin{figure}
+\centering
+	\begin{tikzpicture}
+	\clip
+	  (-5.5,5.5) rectangle (5.5,-5.5);
+	\draw[->]
+	  (-5.5,0) -- (5,0) node[right] {$x$};
+	\draw[->]
+	  (0,-0.5) -- (0,5) node[above] {$y$};
+	\coordinate (O) at (0,0);
+	\coordinate (aux2) at (-4,{4*tan(40)});
+	\coordinate (aux3) at (4,{4*tan(40)});
+	\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
+	\coordinate (right) at ({4*cos(40)},{4*sin(40)});
+	\coordinate (leftDOWN) at (-5,-5);
+	\coordinate (rightDOWN) at (5,-5);
+	\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
+	\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
+	\draw[->]
+	  (O) -- (aux3) node[above] {$2\pi+arcsin{a}$};
+	\draw[->]
+	  (O) -- (aux2) node[above] {$\pi-arcsin{a}$};
+	\draw
+	  (left) -- (right);
+	\draw[thick,red!70!black]
+	  (O) circle (4);
+	\draw[red,<->] % arc
+		(O) ++ (leftArc) arc(-220:40:4.5);
+	\path[clip] (O) circle (4); % fill
+	\fill[draw=black, thick, pattern=north west lines]
+		(-5,{4*sin(40)}) -- (leftDOWN) -- (rightDOWN) -- (5,{4*sin(40)}) -- cycle;
+	\end{tikzpicture}
+\caption{C!}
+\end{figure}
