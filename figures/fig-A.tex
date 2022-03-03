@@ -1,34 +1,9 @@
 \begin{figure}
 \centering
 \begin{tikzpicture}
-\clip
-  (-5.5,5.5) rectangle (5.5,-0.5);
-\draw[->]
-  (-5.5,0) -- (5,0) node[right] {$x$};
-\draw[->]
-  (0,-0.5) -- (0,5) node[above] {$y$};
-\coordinate (O) at (0,0);
-\coordinate (aux2) at (-4,{4*tan(40)});
-\coordinate (aux3) at (4,{4*tan(40)});
-\coordinate (left) at (-{4*cos(40)},{4*sin(40)});
-\coordinate (right) at ({4*cos(40)},{4*sin(40)});
-\coordinate (leftUP) at (-{4*cos(40)},5);
-\coordinate (rightUP) at ({4*cos(40)},5);
-\coordinate (leftArc) at (-{4.5*cos(40)},{4.5*sin(40)});
-\coordinate (rightArc) at ({4.5*cos(40)},{4.5*sin(40)});
-\draw[->]
-  (O) -- (aux3) node[above] {$\arcsin{a}$};
-\draw[->]
-  (O) -- (aux2);
-\draw
-  (left) -- (right);
-\draw[thick,red!70!black]
-  (O) circle (4);
-\draw[red,<->] % arc
-	(O) ++ (leftArc) arc(140:40:4.5);
-\path[clip] (O) circle (4); % fill
-\fill[draw=black, thick, pattern=north west lines]
-	(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
+
+  \pic {symbol 01={40}{40}{$\arcsin{a}$}{$\pi-\arcsin{a}$}};
+
 \end{tikzpicture}
 \caption{A!}
 \end{figure}

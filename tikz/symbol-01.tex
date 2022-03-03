@@ -1,0 +1,55 @@
+\tikzset{
+  pics/symbol 01/.style n args={4}{code={
+
+  %%% vars
+  \def\r{4}
+  \def\rd{4.5}
+  \def\rr{5}
+  \def\gap{0.5}
+  \def\w{\rr + \gap}
+  \def\alpha{#1}
+  \def\beta{#2}
+
+  \clip
+    (-\w,\w) rectangle (\w,-\gap);
+
+  %%% x & y axis
+  \draw[->]
+    (-\rr,0) -- (\rr,0) node[right] {$x$};
+  \draw[->]
+    (0,-\rr) -- (0,\rr) node[above] {$y$};
+
+  \coordinate (O) at (0,0);
+  \coordinate (auxLeft) at (-{\rr*cos(\beta)},{\rr*sin(\beta)});
+  \coordinate (auxRight) at ({\rr*cos(\alpha)},{\rr*sin(\alpha)});
+  \coordinate (left) at (-{\r*cos(\beta)},{\r*sin(\beta)});
+  \coordinate (right) at ({\r*cos(\alpha)},{\r*sin(\alpha)});
+  \coordinate (leftUP) at (-{\r*cos(\beta)},\rr);
+  \coordinate (rightUP) at ({\r*cos(\alpha)},\rr);
+  \coordinate (arcLeft) at (-{\rd*cos(\beta)},{\rd*sin(\beta)});
+  \coordinate (arcRight) at ({\rd*cos(\alpha)},{\rd*sin(\alpha)});
+
+  %%% the fill
+  \begin{scope}
+  \path[clip] (O) circle (4);
+  \fill[draw=black, thick, pattern=north west lines, pattern color=red]
+  	(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
+  \end{scope}
+
+  %%% circle
+  \draw[thick,black!70!black]
+    (O) circle (\r);
+
+  %%% arc
+  \draw[red,<->]
+    (O) ++ (arcLeft) arc({180-\beta}:{\alpha}:\rd);
+
+  %%% lines
+  \draw[->]
+    (O) -- (auxRight) node[above] {#3};
+  \draw[->]
+    (O) -- (auxLeft) node[above] {#4};
+  %\draw
+  %  (left) -- (right);
+
+}}}
