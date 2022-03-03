@@ -1,0 +1,73 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Неједначине које се тригонометријским трансформацијама своде на основне}
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[\cos^{2}(x)+2\sin(x)>1\]
+
+Решење:
+
+\[1-\sin^{2}(x)+2\sin(x)>1\]
+\[\sin(x)(2-\sin(x))>0\]
+\centerline{због $-1\le\sin(x)\le1$}
+\[2-\sin(x)>0\]
+\[\sin(x)>0\]
+\centerline{даје}
+\[0+2k\pi<x<k\pi+2k\pi\]
+\centerline{или}
+\[x\in\bigcup_{k\in\mathbb{Z}}(2k\pi,\pi+2k\pi)\]
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину:
+
+\[1+\cos(x)\cos(3x)>\sin^{2}(x)\]
+
+Решење:
+
+\[1+\cos(x)\cos(3x)>\sin^{2}(x)\]
+\[\cos^{2}(x)+\cos(x)\cos(3x)>0\]
+\[\cos(x)(\cos(x)+\cos(3x))>0\]
+\[\cos(x)\cdot2\cos\left(\frac{x+3x}{2}\right)\cdot\cos\left(\frac{x-3x}{2}\right)>0\]
+\[2\cos(x)\cdot\cos(2x)\cdot\cos(x)>0\]
+\[2\cos^{2}(x)\cdot\cos(2x)>0\]
+\[\cos(2x)>0\]
+\centerline{даје}
+\[-\frac{\pi}{2}+2k\pi<2x<\frac{\pi}{2}+2k\pi\qquad/:2\]
+\[-\frac{\pi}{4}+k\pi<x<\frac{\pi}{4}+k\pi,k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{4}+k\pi,\frac{\pi}{4}+k\pi\right)\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 3}
+
+Решити неједначину:
+
+\[\frac{\sin(2x)-\cos(2x)+1}{\sin(2x)+\cos(2x)-1}>0\]
+
+Решење:
+
+\[\frac{\sin(2x)+(1-\cos(2x))}{\sin(2x)-(1-\cos(2x))}>0\]
+\[\frac{2\sin(x)\cos(x)+2\sin^{2}(x)}{2\sin(x)\cos(x)-2\sin^{2}(x)}>0\]
+\[\frac{2\sin(x)(\cos(x)+\sin(x))}{2\sin(x)(\cos(x)-\sin(x))}>0\]
+\[\frac{\cos(x)+\sin(x)}{\cos(x)-\sin(x)}>0\]
+\[\frac{\sin\left(\frac{\pi}{2}-x\right)+\sin(x)}{\sin\left(\frac{\pi}{2}-x\right)-\sin(x)}>0\]
+\[\frac{2\sin\left(\frac{\frac{\pi}{2}-x+x}{2}\right)\cdot\cos\left(\frac{\frac{\pi}{2}-x-x}{2}\right)}{2\cos\left(\frac{\frac{\pi}{2}-x+x}{2}\right)\cdot\sin\left(\frac{\frac{\pi}{2}-x-x}{2}\right)}>0\]
+\[\frac{\sin\left(\frac{\pi}{4}\right)\cdot\cos\left(\frac{\pi}{4}-x\right)}{\cos\left(\frac{\pi}{4}\right)\cdot\sin\left(\frac{\pi}{4}-x\right)}>0\]
+\[\ctg\left(\frac{\pi}{4}-x\right)>0\]
+\[\tg\left(\frac{\pi}{2}-\left(\frac{\pi}{4}-x\right)\right)>0\]
+\[\tg\left(\frac{\pi}{4}+x\right)>0\]
+\centerline{даје}
+\[0+K\pi<\frac{\pi}{4}+x<\frac{\pi}{2}+K\pi\]
+\[-\frac{\pi}{4}+k\pi<x<\frac{\pi}{2}-\frac{\pi}{4}+4\pi\]
+\[-\frac{\pi}{4}+k\pi<x<\frac{\pi}{4}+k\pi,k\in\mathbb{R}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(-\frac{\pi}{4}+k\pi,\frac{\pi}{4}+k\pi\right)\]
+
+
+\end{document}

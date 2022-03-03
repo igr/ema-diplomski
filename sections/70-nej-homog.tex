@@ -1,0 +1,40 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Хомогене неједначине}
+
+Неједначина облика $a\sin^{2}(x)+b\sin(x)\cos(x)+c\cos^{2}(x)\geqslant0$ зовемо хомогеном.
+
+Решавање:
+
+\[a\sin^{2}(x)+b\sin(x)\cos(x)+c\cos^{2}(x)>0\qquad/:\cos^{2}(x)\neq0, x\neq\frac{\pi}{2}+k\pi,k\in\mathbb{Z}\]
+\[a\frac{\sin^{2}(x)}{\cos^{2}(x)}+b\frac{\sin(x)\cos(x)}{\cos^{2}(x)}+c\frac{\cos^{2}(x)}{\cos^{2}(x)}>0\]
+\[a\tg^{2}(x)+b\tg(x)+c>0\]
+\[\text{сменом} \tg(x)=t\]
+\[\text{сводимо на квадратну једначину}\]
+\[at^{2}+bt+c>0\]
+
+Решавањем ове неједначине и враћањем у смену долазимо до основне неједначине.
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[2\sin^{2}(x)-5\sin(x)\cos(x)+2\cos^{2}(x)<0\]
+
+Решење:
+
+\[2\sin^{2}(x)-5\sin(x)\cos(x)+2\cos^{2}(x)<0\qquad/:\cos^{2}(x)\]
+\[2\frac{\sin^{2}(x)}{\cos^{2}(x)}-\frac{5\sin(x)\cos(x)}{\cos^{2}(x)}+\frac{2\cos^{2}(x)}{\cos^{2}(x)}<0\]
+\[2\tg^{2}(x)-5\tg(x)+2<0\]
+\[\text{сменом }\tg(x)=t\]
+\[2t^{2}-5t+2<0\]
+\[t_{1/2}=\frac{5\pm\sqrt{25-16}}{4}\]
+\[t_{1/2}=\frac{5\pm3}{4}\]
+\[t_{1}=2,t_{2}=\frac{1}{2}\]
+\[\frac{1}{2}<t<2\]
+\[\frac{1}{2}<\tg(x)<2\]
+\[\arctg\left(\frac{1}{2}+k\pi\right)<x<\arctg(2+k\pi),k\in\mathbb{Z}\]
+
+\end{document}

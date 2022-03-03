@@ -1,0 +1,62 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Неједначине које се сменом своде на основне}
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[2\cos^{2}(x)-3\cos(x)+1>0\]
+
+
+Решење:
+
+\[\text{смена:}\cos(x)=t,-1\leqslant t\leqslant1\]
+\[2t^{2}-3t+1>0\]
+\[t_{1/2}=\frac{3\pm\sqrt{9-8}}{4}\]
+\[t_{1/2}=\frac{3\pm1}{4}\Rightarrow t_{1}=1,t_{2}=\frac{1}{2}
+\]
+\[t<\frac{1}{2}Vt>1\]
+
+\begin{enumerate}[label=\alph*)]
+\item $t>1\Rightarrow\cos(x)>1$ , нема решења пошто је $-1\leqslant\cos(x)\leqslant1$
+\item $t<\frac{1}{2}=>\cos(x)<\frac{1}{2}$
+\end{enumerate}
+
+\[\frac{\pi}{3}+2k\pi<x<\frac{5\pi}{3}+2k\pi,\qquad k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\frac{\pi}{3}+2k^{\pi},\frac{5\pi}{3}+2k^{\pi}\right)\]
+
+
+% ---------------------------------------------
+\subsubsection{Пример 2}
+
+Решити неједначину:
+
+\[\sin(x)-3\cos(x)<1\]
+
+Решење:
+
+\[\text{смена:}\tg\left(\frac{x}{2}\right)=t\]
+\[\sin(x)=\frac{2\tg\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}\Rightarrow\sin(x)=\frac{2t}{1+t^{2}}\]
+\[\cos(x)=\frac{1-\tg^{2}\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}\Rightarrow\cos(x)=\frac{1-t^{2}}{1+t^{2}}\]
+
+Решавање:
+
+\[\sin(x)-3\cos(x)<1\]
+\[\frac{2t}{1+t^{2}}-\frac{3\left(1-t^{2}\right)}{1+t^{e}}<1\qquad/1+t^{2}>0\]
+\[2t-3+3t^{2}<1+t^{2}\]
+\[2t^{2}+2t-4<0\qquad/:2\]
+\[t^{2}+t-2<0\]
+\[t_{1/2}=\frac{-1\pm\sqrt{1+8}}{2}\]
+\[t_{1/2}=\frac{-1\pm3}{2};t_{1}=1,t_{2}=-2\]
+\[-2<t<1\]
+\[-2<\tg(\frac{x}{2})<1\]
+\[\arctg(-2)+k\pi<\frac{x}{2}<\arctg(1)+k\pi\]
+\[-\arctg(2)+k\pi<\frac{x}{2}<\frac{\pi}{4}+k\pi\qquad/\cdot2\]
+\[-2\arctg(2)+2k\pi<x<\frac{\pi}{2}+2k\pi,k\in\mathbb{Z}\]
+
+
+
+\end{document}

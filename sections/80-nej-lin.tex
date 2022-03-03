@@ -1,0 +1,58 @@
+\documentclass[../diplomski.tex]{subfiles}
+\begin{document}
+
+\subsection{Линеарна тригонометријска неједначина}
+
+Општи облик: $a\sin(x)+b\cos(x)\gtrless c$
+
+Можемо ову неједначину решавати на два начина.
+
+Први начин: уводимо смену да је
+
+\[\tg\left(\frac{x}{2}\right)=t\]
+\[\Rightarrow\sin(x)=\frac{2+\tg\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}=\frac{2t}{1+t^{2}}\]
+\[\cos(x)=\frac{1-\tg^{2}\left(\frac{x}{2}\right)}{1+\tg^{2}\left(\frac{x}{2}\right)}=\frac{1-t^{2}}{1+t^{2}}\]
+
+Решен пример 2. у одељку: Неједначине које се сменом своде на основне.
+
+Други начин:
+
+\[a\sin(x)+6\cos(x)>c\qquad/:\sqrt{a^{2}+b^{2}}\]
+\[\Rightarrow\frac{a}{\sqrt{a^{2}+b^{2}}}\sin(x)+\frac{b}{\sqrt{a^{2}+b^{2}}}\cos(x)>\frac{c}{\sqrt{a^{2}+b^{2}}}\]
+
+С обзиром да је $\left(\frac{a}{\sqrt{a^{2}+b^{2}}}\right)^{2}+\left(\frac{b}{\sqrt{a^{2}+b^{2}}}\right)^{2}=1$
+следи да постоји угао $\varphi$ тако да је
+
+\[\cos(\varphi)=\frac{a}{\sqrt{a^{2}+b^{2}}},\sin(\varphi)=\frac{6}{\sqrt{a^{2}+b^{2}}}\]
+
+или обрнуто враћањем у неједначину
+
+\[\cos(\varphi)\sin(x)+\sin(\varphi)\cos(x)>\frac{c}{\sqrt{a^{2}+b^{2}}}\]
+\[\sin(x+\varphi)>\frac{c}{\sqrt{a^{2}+b^{2}}}\]
+
+што се решава као основна.
+
+% ---------------------------------------------
+\subsubsection{Пример 1}
+
+Решити неједначину:
+
+\[\sin(x)+\sqrt{3}\cos(x)<-\sqrt{2}\]
+
+Решавање:
+
+\[\sin(x)+\sqrt{3}\cos(x)<-\sqrt{2}\qquad/:\sqrt{1+\sqrt{3}^{2}}=2\]
+\[\frac{1}{2}\sin(x)+\frac{\sqrt{3}}{2}\cos(x)<-\frac{\sqrt{2}}{2}\]
+\[\cos\left(\frac{\pi}{3}\right)=\frac{1}{2}\quad\text{и}\quad\sin\left(\frac{\pi}{3}\right)=\frac{\sqrt{3}}{2}\]
+\[\Rightarrow\cos\left(\frac{\pi}{3}\right)\sin(x)+\sin\left(\frac{\pi}{3}\right)\cos(x)<-\frac{\sqrt{2}}{2}\]
+\[\sin\left(x+\frac{\pi}{3}\right)<-\frac{\sqrt{2}}{2}\]
+
+(могли смо да користимо адициону теорему за косинус)
+
+Решење:
+
+\[\frac{5\pi}{4}+2k\pi<x<\frac{7\pi}{4}+2k\pi,\qquad k\in\mathbb{Z}\]
+\[x\in\bigcup_{k\in\mathbb{Z}}\left(\frac{5\pi}{4}+2k\pi,\frac{7\pi}{4}+2k\pi\right)\]
+
+
+\end{document}
