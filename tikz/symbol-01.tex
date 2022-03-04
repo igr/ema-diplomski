@@ -1,8 +1,11 @@
+%%% global vars
+\def\r{4}
+
 \tikzset{
   pics/symbol 01/.style n args={6}{code={
 
   %%% vars
-  \def\r{4}
+  %\def\r{4}
   \def\rd{4.5}
   \def\rr{5}
   \def\w{6}
@@ -80,7 +83,11 @@
   %%% lines
   \def\position {}
   \ifnum\alpha<180
-    \def\position {above}
+    \ifnum\alpha<0
+      \def\position {below}
+    \else
+      \def\position {above}
+    \fi
   \else
     \def\position {below}
   \fi
