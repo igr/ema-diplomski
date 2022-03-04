@@ -1,17 +1,28 @@
 \tikzset{
-  pics/symbol 01/.style n args={4}{code={
+  pics/symbol 01/.style n args={5}{code={
 
   %%% vars
   \def\r{4}
   \def\rd{4.5}
   \def\rr{5}
-  \def\gap{0.5}
-  \def\w{\rr + \gap}
-  \def\alpha{#1}
-  \def\beta{#2}
+  \def\w{6}
+  \def\alpha{#1}  % right angle, from X axis to Y
+  \def\beta{#2}   % left andle, from X axis to Y
+  \def\type{#5}   % tip grafika
+  \def\typeUP{UP}
+  \def\typeFULL{FULL}
+  \def\typeDOWN{DOWN}
 
-  \clip
-    (-\w,\w) rectangle (\w,-\gap);
+  \ifx\type\typeUP
+    \clip
+      (-\w,\w) rectangle (\w,-0.5);
+  \else
+    \ifx\type\typeDOWN
+      \clip (-\w,0.5) rectangle (\w,-\w);
+    \else
+      \clip (-\w,\w) rectangle (\w,-\w);
+    \fi
+  \fi
 
   %%% x & y axis
   \draw[->]
@@ -24,17 +35,29 @@
   \coordinate (auxRight) at ({\rr*cos(\alpha)},{\rr*sin(\alpha)});
   \coordinate (left) at (-{\r*cos(\beta)},{\r*sin(\beta)});
   \coordinate (right) at ({\r*cos(\alpha)},{\r*sin(\alpha)});
-  \coordinate (leftUP) at (-{\r*cos(\beta)},\rr);
-  \coordinate (rightUP) at ({\r*cos(\alpha)},\rr);
+  \coordinate (leftLEFT) at (-\rr,{\r*sin(\beta)});
+  \coordinate (rightRIGHT) at (\rr,{\r*sin(\alpha)});
+  \coordinate (leftUP) at (-\rr,\rr);
+  \coordinate (rightUP) at (\rr,\rr);
+  \coordinate (leftDOWN) at (-\rr,-\rr);
+  \coordinate (rightDOWN) at (\rr,-\rr);
   \coordinate (arcLeft) at (-{\rd*cos(\beta)},{\rd*sin(\beta)});
   \coordinate (arcRight) at ({\rd*cos(\alpha)},{\rd*sin(\alpha)});
 
   %%% the fill
-  \begin{scope}
-  \path[clip] (O) circle (4);
-  \fill[draw=black, thick, pattern=north west lines, pattern color=red]
-  	(left) -- (leftUP) -- (rightUP) -- (right) -- cycle;
-  \end{scope}
+  \ifnum\beta<0
+    \begin{scope}
+    \path[clip] (O) circle (\r);
+    \fill[draw=black, thick, pattern=north west lines, pattern color=red]
+      (rightRIGHT) -- (rightDOWN) -- (leftDOWN) -- (leftLEFT) -- cycle;
+    \end{scope}
+  \else
+    \begin{scope}
+    \path[clip] (O) circle (\r);
+    \fill[draw=black, thick, pattern=north west lines, pattern color=red]
+    	(leftLEFT) -- (leftUP) -- (rightUP) -- (rightRIGHT) -- cycle;
+    \end{scope}
+  \fi
 
   %%% circle
   \draw[thick,black!70!black]
@@ -45,11 +68,22 @@
     (O) ++ (arcLeft) arc({180-\beta}:{\alpha}:\rd);
 
   %%% lines
-  \draw[->]
-    (O) -- (auxRight) node[above] {#3};
-  \draw[->]
-    (O) -- (auxLeft) node[above] {#4};
-  %\draw
-  %  (left) -- (right);
-
+  \def\position {}
+  \ifnum\alpha<180
+    \def\position {above}
+  \else
+    \def\position {below}
+  \fi
+  \draw[->] (O) -- (auxRight) node[\position] {#3};
+  \def\position {}
+  \ifnum\beta>0
+    \def\position {above}
+  \else
+    \ifnum\beta<-180
+      \def\position {above}
+    \else
+      \def\position {below}
+    \fi
+  \fi
+  \draw[->] (O) -- (auxLeft) node[\position] {#4};
 }}}
