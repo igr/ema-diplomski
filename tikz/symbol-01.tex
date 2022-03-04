@@ -1,5 +1,5 @@
 \tikzset{
-  pics/symbol 01/.style n args={5}{code={
+  pics/symbol 01/.style n args={6}{code={
 
   %%% vars
   \def\r{4}
@@ -12,6 +12,9 @@
   \def\typeUP{UP}
   \def\typeFULL{FULL}
   \def\typeDOWN{DOWN}
+  \def\filling{#6}   % tip fila
+  \def\fillingOUT{OUT}
+  \def\fillingIN{IN}
 
   \ifx\type\typeUP
     \clip
@@ -35,27 +38,34 @@
   \coordinate (auxRight) at ({\rr*cos(\alpha)},{\rr*sin(\alpha)});
   \coordinate (left) at (-{\r*cos(\beta)},{\r*sin(\beta)});
   \coordinate (right) at ({\r*cos(\alpha)},{\r*sin(\alpha)});
-  \coordinate (leftLEFT) at (-\rr,{\r*sin(\beta)});
-  \coordinate (rightRIGHT) at (\rr,{\r*sin(\alpha)});
-  \coordinate (leftUP) at (-\rr,\rr);
-  \coordinate (rightUP) at (\rr,\rr);
-  \coordinate (leftDOWN) at (-\rr,-\rr);
-  \coordinate (rightDOWN) at (\rr,-\rr);
+
+  \coordinate (bottomLeft) at (-\rr,-\rr);
+  \coordinate (bottomRight) at (\rr,-\rr);
+  \coordinate (topRight) at (\rr,\rr);
+  \coordinate (topLeft) at (-\rr,\rr);
+
+  \coordinate (arcCircleLeft) at (-{\r*cos(\beta)},{\r*sin(\beta)});
+  \coordinate (arcCircleRight) at (-{\r*cos(\beta)},{\r*sin(\beta)});
   \coordinate (arcLeft) at (-{\rd*cos(\beta)},{\rd*sin(\beta)});
   \coordinate (arcRight) at ({\rd*cos(\alpha)},{\rd*sin(\alpha)});
 
+  % for debugging
+  %\node[draw] at (0,0) {\filling};
+
   %%% the fill
-  \ifnum\beta<0
+  \ifx\filling\fillingIN
     \begin{scope}
-    \path[clip] (O) circle (\r);
-    \fill[draw=black, thick, pattern=north west lines, pattern color=red]
-      (rightRIGHT) -- (rightDOWN) -- (leftDOWN) -- (leftLEFT) -- cycle;
+    \path[clip] (O) ++ (arcCircleLeft) arc({180-\beta}:{\alpha}:\r)
+                (left) -- (right) -- (O);
+    \fill[pattern=north west lines, pattern color=red]
+      (bottomLeft) -- (bottomRight) -- (topRight) -- (topLeft) -- cycle;
     \end{scope}
   \else
     \begin{scope}
-    \path[clip] (O) circle (\r);
-    \fill[draw=black, thick, pattern=north west lines, pattern color=red]
-    	(leftLEFT) -- (leftUP) -- (rightUP) -- (rightRIGHT) -- cycle;
+    \path[clip] (O) ++ (arcCircleLeft) arc({180-\beta}:{\alpha}:\r);
+
+    \fill[pattern=north west lines, pattern color=red]
+    	(bottomLeft) -- (bottomRight) -- (topRight) -- (topLeft) -- cycle;
     \end{scope}
   \fi
 
@@ -75,6 +85,7 @@
     \def\position {below}
   \fi
   \draw[->] (O) -- (auxRight) node[\position] {#3};
+
   \def\position {}
   \ifnum\beta>0
     \def\position {above}
@@ -86,4 +97,5 @@
     \fi
   \fi
   \draw[->] (O) -- (auxLeft) node[\position] {#4};
+  \draw[thick] (left) -- (right);
 }}}
