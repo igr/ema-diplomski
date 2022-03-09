@@ -1,8 +1,50 @@
 \begin{figure}
 \centering
-	\begin{tikzpicture}
-	\clip
-	  (-5.5,5.5) rectangle (5.5,-5.5);
-	\end{tikzpicture}
+\begin{tikzpicture}
+
+  %%% vars
+  \def\r{4}
+  \def\rd{4.5}
+  \def\rr{5}
+  \def\w{6}
+
+  %%% x & y axis
+  \draw[->]
+    (-\rr,0) -- (\rr,0) node[right] {$x$};
+  \draw[->]
+    (0,-\rr) -- (0,\rr) node[above] {$y$};
+
+  \coordinate (O) at (0,0);
+
+  \coordinate (bottomLeft) at (-\rr,-\rr);
+  \coordinate (bottomRight) at (\rr,-\rr);
+  \coordinate (topRight) at (\rr,\rr);
+  \coordinate (topLeft) at (-\rr,\rr);
+
+  % fill
+  \begin{scope}
+    \path[clip] (O) ++ (\r,0) arc(0:-90:\r)
+                (O) -- (\r,0) -- (0,-\r)
+                (O) ++ (0,\r) arc(90:180:\r)
+                (O) -- (-\r,0) -- (0,\r)
+                ;
+    \fill[pattern=north west lines, pattern color=red]
+        (bottomLeft) -- (bottomRight) -- (topRight) -- (topLeft) -- cycle;
+  \end{scope}
+
+  %%% circle
+  \draw[thick,black!70!black]
+    (O) circle (\r);
+
+  %%% arc
+  \draw[red,<->]
+    (O) ++ (\rd,0) arc(0:90:\rd);
+
+  \draw[] (O) -- (-\rd,0) node[above] {$\pi$};
+  \draw[] (0,\rd) node[left] {$\frac{\pi}{2}$};
+  \draw[] (\r,-\rd) -- (\r,\rd);
+  \draw[thick] (\r,0) -- (\r,-\rd);
+  
+\end{tikzpicture}
 \caption{ZC!}
 \end{figure}

@@ -1,8 +1,67 @@
 \begin{figure}
 \centering
-	\begin{tikzpicture}
-	\clip
-	  (-5.5,5.5) rectangle (5.5,-5.5);
-	\end{tikzpicture}
+\begin{tikzpicture}
+
+  %%% vars
+  \def\r{4}
+  \def\rd{4.5}
+  \def\rr{5}
+  \def\w{6}
+  \def\alpha{40}
+  
+  \clip (-\w,\w)
+    rectangle (\w,-0.5);
+
+  %%% x & y axis
+  \draw[->]
+    (-\rr,0) -- (\rr,0) node[right] {$x$};
+  \draw[->]
+    (0,-\rr) -- (0,\rr) node[above] {$y$};
+
+  \coordinate (O) at (0,0);
+
+  \coordinate (left) at ({-\rd},{-\rd*tan(\alpha)});
+  \coordinate (right) at ({\rd},{\rd*tan(\alpha)});
+  \coordinate (rightAux) at ({\r},{\r*tan(\alpha)});
+  \coordinate (rightCircle) at ({\r*cos(\alpha)},{\r*sin(\alpha)});
+
+  \coordinate (bottomLeft) at (-\rr,-\rr);
+  \coordinate (bottomRight) at (\rr,-\rr);
+  \coordinate (topRight) at (\rr,\rr);
+  \coordinate (topLeft) at (-\rr,\rr);
+
+
+  % for debugging
+  %\node[draw] at (0,0) {\filling};
+
+  % fill
+  \begin{scope}
+    \path[clip] (O) ++ (0,\r) arc({90}:{\alpha}:\r)
+                (O) -- ({\r*cos(\alpha)},{\r*sin(\alpha)}) -- (0,\r)
+                ;
+    \fill[pattern=north west lines, pattern color=red]
+        (bottomLeft) -- (bottomRight) -- (topRight) -- (topLeft) -- cycle;
+  \end{scope}
+
+  %%% circle
+  \draw[thick,black!70!black]
+    (O) circle (\r);
+
+  %%% arc
+  \draw[red,<->]
+    (O) ++ (0,\rd) arc({90}:{\alpha}:\rd);
+
+  \draw[->,thick] (O) -- (right) node[above] {$\arctg(\sqrt{3})=\frac{\pi}{3}$};
+  \draw[] (0,\rd) node[left] {$\frac{\pi}{2}$};
+  \draw[] (\r,-\rd) -- (\r,\rd);
+  \draw[] (\r,0) -- (rightAux) node [midway,right] {$\sqrt{3}$};
+  \draw[thick] (rightAux) -- (\r,\w);  
+  
+  
+  
+  
+  
+
+\end{tikzpicture}
 \caption{ZB!}
 \end{figure}
