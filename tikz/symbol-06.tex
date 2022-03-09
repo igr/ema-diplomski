@@ -1,0 +1,59 @@
+
+\tikzset{
+  pics/symbol 06/.style n args={4}{code={
+
+  %%% vars
+  \def\r{4}
+  \def\rd{4.5}
+  \def\rr{5}
+  \def\w{6}
+  \def\alpha{#1}  % right angle, from X axis to Y
+
+ \clip
+    (-\w,\w) rectangle (\w,-0.5);
+
+  %%% x & y axis
+  \draw[->]
+    (-\rr,0) -- (\rr,0) node[right] {$x$};
+  \draw[->]
+    (0,-\rr) -- (0,\rr) node[above] {$y$};
+
+  \coordinate (O) at (0,0);
+
+  \coordinate (left) at ({-\rd},{-\rd*tan(\alpha)});
+  \coordinate (right) at ({\rd},{\rd*tan(\alpha)});
+  \coordinate (rightAux) at ({\r*tan(90-\alpha)},{\r});
+  \coordinate (rightCircle) at ({\r*cos(\alpha)},{\r*sin(\alpha)});
+
+  \coordinate (bottomLeft) at (-\rr,-\rr);
+  \coordinate (bottomRight) at (\rr,-\rr);
+  \coordinate (topRight) at (\rr,\rr);
+  \coordinate (topLeft) at (-\rr,\rr);
+
+
+  % for debugging
+  %\node[draw] at (0,0) {\filling};
+
+  % fill
+  \begin{scope}
+    \path[clip] (O) ++ (\r,0) arc({0}:{\alpha}:\r)
+                (O) -- ({\r*cos(\alpha)},{\r*sin(\alpha)}) -- (\r,0)
+                ;
+    \fill[pattern=north west lines, pattern color=red]
+        (bottomLeft) -- (bottomRight) -- (topRight) -- (topLeft) -- cycle;
+  \end{scope}
+
+  %%% circle
+  \draw[thick,black!70!black]
+    (O) circle (\r);
+
+  %%% arc
+  \draw[red,<->]
+    (O) ++ (\rd,0) arc({0}:{\alpha}:\rd);
+
+  \draw[->,thick] (left) -- (right) node[left] {#2};
+  \draw[] (\rd,0) node[below] {#3};
+  \draw[] (-\rd,\r) -- (\rd,\r);
+  \draw[] (0,\r) -- (rightAux) node [midway,above] {#4};
+  \draw[thick] (rightAux) -- (\w,\r);
+}}}
