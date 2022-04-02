@@ -12,14 +12,45 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{tikz}
+\usepackage{caption}
 \usepackage{subfiles}
+\usepackage{wrapfig}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{float}
+\usepackage{titlesec}
+
 \usetikzlibrary{angles,quotes,patterns,arrows.meta,positioning,fit}
 
 \tikzset{>={Latex[width=3mm,length=3mm]}} % bigger arrowheads
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 
+% caption definition
+\captionsetup[figure]{
+  position=bottom,
+  justification=centering,
+  width=.85\textwidth,
+  labelfont=bf,
+  font=small
+}
+
+% box around figure, for debugging purposes
+\floatstyle{boxed} 
+\restylefloat{figure}
+
+% paging
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Страна \thepage \hspace{1pt} од \pageref{LastPage}}
+
+% newpage on sub/sections
+\newcommand{\sectionbreak}{\clearpage}
+\newcommand{\subsectionbreak}{\clearpage}
+
+% subfiles
 \usepackage{subfiles} % should be last in the preamble
 
+% meta
 \title{Тригонометријске неједначине}
 \author{Ema Spasić}
 
@@ -43,13 +74,11 @@
 \setlength{\parskip}{1em}
 
 % ---------------------------------------------
-\newpage
 \section{Увод}\label{Увод}
 
 \subfile{sections/01-uvod}
 
 % ---------------------------------------------
-\newpage
 \section{Тригонометријска неједначина}
 
 То су неједначине код којих се непозната јавља као аргумент
@@ -70,7 +99,6 @@
 \subfile{sections/25-cosx-gt-b}
 
 % ---------------------------------------------
-\newpage
 \section{Неједначине са $\tg(x)$ i $\ctg(x)$}
 
 Ове неједначине за разлику од оних са $\sin(x)$ и $\cos(x)$ увек имају решења с обзиром да $\tg(x)$ и $\ctg(x)$ узимају вредности из целог скупа $\mathbb{R}$.
@@ -81,7 +109,6 @@
 \subfile{sections/45-ctgx-lt-a}
 
 % ---------------------------------------------
-\newpage
 \section{Различити типови тригонометријских неједначина}
 
 
@@ -91,20 +118,17 @@
 \subfile{sections/80-nej-lin}
 
 % ---------------------------------------------
-\newpage
 \section{Разни задаци из неједначина}
 
 \subfile{sections/90-zadaci}
 
 
 % ---------------------------------------------
-\newpage
 \section{Тригонометријски круг}
 
 \subfile{sections/99-trig-krug}
 
 % ---------------------------------------------
-\newpage
 \section{Литература}
 
 \begin{enumerate}
