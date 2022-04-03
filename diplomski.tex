@@ -35,13 +35,15 @@
 }
 
 % box around figure, for debugging purposes
-\floatstyle{boxed} 
-\restylefloat{figure}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
 
 % paging
 \pagestyle{fancy}
 \fancyhf{}
-\rfoot{Страна \thepage \hspace{1pt} од \pageref{LastPage}}
+\lhead{Тригонометријске неједначине}
+\cfoot{\fontsize{9}{11}\selectfont Страна \thepage \hspace{1pt} од \pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}%
 
 % newpage on sub/sections
 \newcommand{\sectionbreak}{\clearpage}

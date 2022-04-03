@@ -6,7 +6,8 @@
   \def\r{4}
   \def\rd{4.5}
   \def\rr{5}
-  \def\w{6}
+  \def\w{8}
+  \def\h{6}
   \def\alpha{#1}  % right angle, from X axis to Y
   \def\beta{#2}   % left andle, from X axis to Y
   \def\type{#5}   % tip grafika
@@ -19,12 +20,12 @@
 
   \ifx\type\typeUP
     \clip
-      (-\w,\w) rectangle (\w,-0.5);
+      (-\w,\h) rectangle (\w,-0.5);
   \else
     \ifx\type\typeDOWN
-      \clip (-\w,0.5) rectangle (\w,-\w);
+      \clip (-\w,0.5) rectangle (\w,-\h);
     \else
-      \clip (-\w,\w) rectangle (\w,-\w);
+      \clip (-\w,\h) rectangle (\w,-\h);
     \fi
   \fi
 
