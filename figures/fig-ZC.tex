@@ -1,6 +1,10 @@
-\begin{figure}
+\begin{figure}[!ht]
 \centering
-\begin{tikzpicture}
+\vspace{180pt}%
+\begin{tikzpicture}[transform canvas={scale=0.6}]
+\begin{scope}[yshift=140pt]
+
+  \tikzstyle{every node}=[font=\fontsize{20}{20}\selectfont]
 
   %%% vars
   \def\r{4}
@@ -44,7 +48,8 @@
   \draw[] (0,\rd) node[left] {$\frac{\pi}{2}$};
   \draw[] (\r,-\rd) -- (\r,\rd);
   \draw[thick] (\r,0) -- (\r,-\rd);
-  
+
+\end{scope}  
 \end{tikzpicture}
 \caption{ZC!}
 \end{figure}

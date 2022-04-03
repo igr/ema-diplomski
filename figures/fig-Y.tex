@@ -1,6 +1,11 @@
-\begin{figure}
+\begin{figure}[!ht]
 \centering
-\begin{tikzpicture}
+\vspace{180pt}%
+\begin{tikzpicture}[transform canvas={scale=0.6}]
+\begin{scope}[yshift=140pt]
+  
+
+  \tikzstyle{every node}=[font=\fontsize{20}{20}\selectfont]
 
   %%% vars
   \def\r{4}
@@ -60,7 +65,8 @@
   \draw[] (\r,0) -- (rightAux) node [midway,right] {$\frac{1}{2}$};
   \draw[thick] (rightAux) -- (\r,7) node[right] {$2$};
   
-  
+
+\end{scope}
 \end{tikzpicture}
 \caption{Y!}
 \end{figure}
